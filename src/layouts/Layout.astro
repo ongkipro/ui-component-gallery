@@ -1,0 +1,429 @@
+---
+import '../styles/global.css';
+import { COMPONENTS } from '../data/components';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Komponen UI/UX Web — Galeri Referensi & Panduan Pembelajaran",
+  description = "Panduan lengkap anatomi, fungsi, aksesibilitas, alias industri, dan prompt AI untuk komponen UI/UX antarmuka web modern dalam Bahasa Indonesia." 
+} = Astro.props;
+
+const searchIndex = COMPONENTS.map((c) => ({
+  id: c.id,
+  name: c.name,
+  nameIndo: c.nameIndo,
+  categoryLabel: c.categoryLabel,
+  summary: c.summary,
+  searchKey: `${c.name.toLowerCase()} ${c.nameIndo.toLowerCase()} ${c.categoryLabel.toLowerCase()} ${c.alsoKnownAs.join(' ').toLowerCase()} ${c.summary.toLowerCase()}`
+}));
+---
+
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Google Fonts: Instrument Serif, Plus Jakarta Sans, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Anti-flicker theme script -->
+    <script is:inline>
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      })();
+
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      window.localStorage.setItem('theme', theme);
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col antialiased bg-[var(--bg-main)] text-[var(--text-main)]">
+    <!-- Top Bar / Site Header -->
+    <header class="sticky top-0 z-40 bg-[var(--bg-card)]/90 backdrop-blur-md border-b border-[var(--border-main)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+        <!-- Logo / Title -->
+        <div class="flex items-center gap-4">
+          <a href="/" class="flex items-center gap-2 group">
+            <span class="w-8 h-8 rounded-lg bg-[var(--text-main)] text-[var(--bg-main)] flex items-center justify-center font-bold text-sm font-mono-code transition-transform group-hover:scale-105 shadow-xs">
+              UI
+            </span>
+            <div class="flex flex-col">
+              <span class="font-serif-display text-xl sm:text-2xl leading-tight font-normal tracking-tight text-[var(--text-main)]">
+                The Component Gallery <span class="text-xs font-mono-code px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 ml-1 font-bold">ID</span>
+              </span>
+              <span class="text-[11px] text-[var(--text-muted)] tracking-wider uppercase hidden sm:inline font-mono-code">
+                Katalog Belajar Komponen UI/UX
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Desktop Navigation & Actions -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Search trigger button -->
+          <button 
+            id="search-btn-trigger" 
+            type="button" 
+            class="flex items-center gap-2 text-xs font-mono-code px-3 py-2 rounded-lg border border-[var(--border-main)] bg-[var(--bg-main)] hover:bg-[var(--border-main)] transition-colors text-[var(--text-muted)] min-h-[44px] touch-manipulation cursor-pointer"
+            aria-label="Cari komponen"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <span class="hidden md:inline">Cari komponen...</span>
+            <span class="inline md:hidden text-xs">Cari</span>
+            <kbd class="hidden sm:inline-block px-1.5 py-0.5 text-[10px] rounded bg-[var(--bg-card)] border border-[var(--border-main)] shadow-xs">⌘K</kbd>
+          </button>
+
+          <!-- Desktop Nav Links -->
+          <nav class="hidden lg:flex items-center gap-1 text-xs font-medium">
+            <a href="/" class="px-3 py-1.5 rounded-md hover:bg-[var(--border-main)] transition-colors">
+              Semua Komponen
+            </a>
+            <a href="/panduan-belajar" class="px-3 py-1.5 rounded-md hover:bg-[var(--border-main)] transition-colors">
+              Peta Belajar
+            </a>
+            <a href="/prinsip-desain" class="px-3 py-1.5 rounded-md hover:bg-[var(--border-main)] transition-colors">
+              Prinsip UX
+            </a>
+            <a href="/studi-kasus/dealer-hino" class="px-3 py-1.5 rounded-md bg-red-50 text-red-700 dark:bg-red-950/50 dark:text-red-300 font-semibold hover:bg-red-100 transition-colors flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></span>
+              Studi Kasus Hino
+            </a>
+          </nav>
+
+          <!-- Theme Toggle Desktop -->
+          <button 
+            id="theme-toggle" 
+            type="button"
+            class="p-2.5 rounded-lg border border-[var(--border-main)] text-[var(--text-main)] hover:bg-[var(--border-main)] transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center touch-manipulation cursor-pointer"
+            aria-label="Ganti Tema"
+          >
+            <!-- Sun icon -->
+            <svg id="sun-icon" class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <!-- Moon icon -->
+            <svg id="moon-icon" class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button
+            id="mobile-menu-open-btn"
+            type="button"
+            class="lg:hidden p-2.5 rounded-lg border border-[var(--border-main)] text-[var(--text-main)] hover:bg-[var(--border-main)] transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center touch-manipulation cursor-pointer"
+            aria-label="Buka Menu Navigasi"
+            aria-expanded="false"
+            aria-controls="mobile-drawer"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer Backdrop -->
+    <div id="mobile-drawer-backdrop" class="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+    <!-- Mobile Slide-over Drawer Navigation -->
+    <aside id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menu Navigasi Mobile" class="fixed top-0 right-0 z-50 h-full w-[85%] max-w-[340px] bg-[var(--bg-card)] border-l border-[var(--border-main)] shadow-2xl transform translate-x-full transition-transform duration-300 ease-out flex flex-col justify-between overflow-hidden">
+      <!-- Drawer Header -->
+      <div class="p-4 border-b border-[var(--border-main)] flex items-center justify-between bg-[var(--bg-main)]">
+        <div class="flex items-center gap-2">
+          <span class="w-7 h-7 rounded-lg bg-[var(--text-main)] text-[var(--bg-main)] flex items-center justify-center font-bold text-xs font-mono-code">
+            UI
+          </span>
+          <span class="font-serif-display text-lg font-normal text-[var(--text-main)]">The Component Gallery</span>
+        </div>
+        <button id="mobile-drawer-close-btn" type="button" class="p-2 rounded-lg hover:bg-[var(--border-main)] text-[var(--text-muted)] min-w-[40px] min-h-[40px] flex items-center justify-center touch-manipulation" aria-label="Tutup Menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Drawer Content Links -->
+      <nav class="p-4 overflow-y-auto flex-1 space-y-6 text-sm">
+        <!-- Main Pages -->
+        <div>
+          <p class="text-[10px] font-mono-code uppercase tracking-widest text-[var(--text-muted)] mb-2 font-bold">Halaman Utama</p>
+          <div class="space-y-1">
+            <a href="/" class="mobile-drawer-link flex items-center justify-between px-3 py-2.5 rounded-xl text-[var(--text-main)] hover:bg-[var(--border-main)] font-medium transition-colors min-h-[44px]">
+              <span>Semua Komponen</span>
+              <span class="text-xs text-[var(--text-muted)] font-mono-code">20</span>
+            </a>
+            <a href="/panduan-belajar" class="mobile-drawer-link flex items-center justify-between px-3 py-2.5 rounded-xl text-[var(--text-main)] hover:bg-[var(--border-main)] font-medium transition-colors min-h-[44px]">
+              <span>Peta Belajar & Roadmap</span>
+              <span class="text-xs text-blue-600 font-mono-code">4 Level</span>
+            </a>
+            <a href="/prinsip-desain" class="mobile-drawer-link flex items-center justify-between px-3 py-2.5 rounded-xl text-[var(--text-main)] hover:bg-[var(--border-main)] font-medium transition-colors min-h-[44px]">
+              <span>Prinsip UX & Psikologi</span>
+              <span class="text-xs text-emerald-600 font-mono-code">6 Hukum</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Featured Real-World Case Study -->
+        <div class="p-3.5 rounded-xl border border-red-200 dark:border-red-900/60 bg-red-50/60 dark:bg-red-950/30">
+          <div class="flex items-center gap-1.5 text-xs font-bold text-red-700 dark:text-red-400 mb-1">
+            <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+            <span>Studi Kasus Nyata B2B</span>
+          </div>
+          <p class="text-xs text-[var(--text-muted)] mb-3 leading-relaxed">
+            Bedah arsitektur komponen pada website komersial <strong>dealerhinoofficial.com</strong>.
+          </p>
+          <a href="/studi-kasus/dealer-hino" class="mobile-drawer-link inline-flex items-center justify-center w-full py-2.5 px-3 text-xs font-bold rounded-lg bg-red-600 text-white shadow-xs hover:bg-red-700 transition-colors min-h-[44px]">
+            Lihat Analisa Kasus →
+          </a>
+        </div>
+
+        <!-- Category Jump -->
+        <div>
+          <p class="text-[10px] font-mono-code uppercase tracking-widest text-[var(--text-muted)] mb-2 font-bold">Kategori Komponen</p>
+          <div class="grid grid-cols-1 gap-1 text-xs">
+            <a href="/#layout" class="mobile-drawer-link px-3 py-2.5 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--border-main)] transition-colors min-h-[40px] flex items-center">Layout & Containers</a>
+            <a href="/#navigation" class="mobile-drawer-link px-3 py-2.5 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--border-main)] transition-colors min-h-[40px] flex items-center">Navigation</a>
+            <a href="/#forms" class="mobile-drawer-link px-3 py-2.5 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--border-main)] transition-colors min-h-[40px] flex items-center">Forms & Inputs</a>
+            <a href="/#data-display" class="mobile-drawer-link px-3 py-2.5 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--border-main)] transition-colors min-h-[40px] flex items-center">Data Display</a>
+            <a href="/#feedback" class="mobile-drawer-link px-3 py-2.5 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--border-main)] transition-colors min-h-[40px] flex items-center">Feedback & Overlays</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Drawer Footer -->
+      <div class="p-4 border-t border-[var(--border-main)] bg-[var(--bg-main)] text-xs text-[var(--text-muted)] flex items-center justify-between">
+        <span class="font-mono-code text-[11px]">Local v1.0 • Offline</span>
+        <span class="text-[11px]">Astro 7 + Tailwind 4</span>
+      </div>
+    </aside>
+
+    <!-- Main Content Slot -->
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-[var(--border-main)] bg-[var(--bg-card)] mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div class="md:col-span-2">
+            <span class="font-serif-display text-2xl font-normal tracking-tight text-[var(--text-main)] block mb-2">
+              The Component Gallery (Edisi Indonesia)
+            </span>
+            <p class="text-sm text-[var(--text-muted)] max-w-md leading-relaxed mb-4">
+              Dibuat untuk memudahkan developer & desainer memahami anatomi antarmuka web, standar WAI-ARIA, terminologi design system global, serta prompt AI presisi untuk implementasi cepat.
+            </p>
+            <div class="flex items-center gap-2 text-xs font-mono-code text-[var(--text-muted)]">
+              <span>Terinspirasi dari</span>
+              <a href="https://component.gallery" target="_blank" rel="noopener noreferrer" class="underline hover:text-[var(--text-main)]">
+                component.gallery
+              </a>
+              <span>oleh Iain Bean</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-mono-code uppercase tracking-wider text-[var(--text-muted)] mb-3 font-bold">
+              Navigasi Cepat
+            </h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/" class="text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors">Semua Komponen (20)</a></li>
+              <li><a href="/panduan-belajar" class="text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors">Peta Belajar & Decision Tree</a></li>
+              <li><a href="/prinsip-desain" class="text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors">Prinsip UX & Aksesibilitas</a></li>
+              <li><a href="/studi-kasus/dealer-hino" class="text-red-600 dark:text-red-400 font-medium hover:underline transition-colors">Studi Kasus: Dealer Hino B2B</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-mono-code uppercase tracking-wider text-[var(--text-muted)] mb-3 font-bold">
+              Design Systems Rujukan
+            </h4>
+            <ul class="space-y-2 text-sm text-[var(--text-muted)]">
+              <li>Shopify Polaris (Commerce)</li>
+              <li>IBM Carbon (Enterprise Data)</li>
+              <li>Uber Base Web (Clean SaaS)</li>
+              <li>Ant Design & Radix UI</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pt-8 border-t border-[var(--border-main)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]">
+          <p>© {new Date().getFullYear()} UI Component Gallery ID. Dilengkapi Interactive Sandbox & Production AI Prompts.</p>
+          <div class="flex items-center gap-4">
+            <span class="inline-flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              Local Offline Ready
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Search Modal (Global) -->
+    <div id="search-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-start justify-center pt-20 p-4" role="dialog" aria-modal="true">
+      <div class="w-full max-w-2xl bg-[var(--bg-card)] border border-[var(--border-main)] rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[80vh]">
+        <!-- Search Input -->
+        <div class="p-4 border-b border-[var(--border-main)] flex items-center gap-3">
+          <svg class="w-5 h-5 text-[var(--text-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input 
+            id="modal-search-input" 
+            type="text" 
+            placeholder="Ketik nama komponen, alias, atau fungsi (misal: modal, accordion, dropdown, alert)..." 
+            class="w-full bg-transparent text-sm sm:text-base outline-none text-[var(--text-main)] placeholder:text-[var(--text-muted)]"
+          />
+          <kbd id="close-search-btn" class="px-2 py-1 text-xs rounded bg-[var(--bg-main)] border border-[var(--border-main)] cursor-pointer text-[var(--text-muted)] hover:text-[var(--text-main)]">
+            ESC
+          </kbd>
+        </div>
+
+        <!-- Search Results list -->
+        <div id="modal-search-results" class="p-2 overflow-y-auto divide-y divide-[var(--border-main)] text-sm">
+          <p class="p-4 text-center text-xs text-[var(--text-muted)] font-mono-code">
+            Mulai mengetik untuk mencari komponen...
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data for Global Search -->
+    <script id="global-components-data" type="application/json" set:html={JSON.stringify(searchIndex)} />
+
+    <!-- Theme switcher & global search & mobile drawer script -->
+    <script>
+      // 1. Theme Toggle Logic
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      themeToggleBtn?.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        if (isDark) {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+        } else {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+        }
+      });
+
+      // 2. Search Modal Logic
+      const searchTrigger = document.getElementById('search-btn-trigger');
+      const searchModal = document.getElementById('search-modal');
+      const searchInput = document.getElementById('modal-search-input') as HTMLInputElement | null;
+      const closeSearchBtn = document.getElementById('close-search-btn');
+      const modalResults = document.getElementById('modal-search-results');
+
+      // Load search index
+      const dataScript = document.getElementById('global-components-data');
+      const allComponents = dataScript ? JSON.parse(dataScript.textContent || '[]') : [];
+
+      function openSearch() {
+        searchModal?.classList.remove('hidden');
+        searchModal?.classList.add('flex');
+        searchInput?.focus();
+      }
+
+      function closeSearch() {
+        searchModal?.classList.add('hidden');
+        searchModal?.classList.remove('flex');
+        if (searchInput) searchInput.value = '';
+        if (modalResults) {
+          modalResults.innerHTML = '<p class="p-4 text-center text-xs text-[var(--text-muted)] font-mono-code">Mulai mengetik untuk mencari komponen...</p>';
+        }
+      }
+
+      searchTrigger?.addEventListener('click', openSearch);
+      closeSearchBtn?.addEventListener('click', closeSearch);
+
+      searchModal?.addEventListener('click', (e) => {
+        if (e.target === searchModal) closeSearch();
+      });
+
+      // Global Live Search input filter
+      searchInput?.addEventListener('input', (e) => {
+        const query = (e.target as HTMLInputElement).value.trim().toLowerCase();
+        if (!modalResults) return;
+
+        if (!query) {
+          modalResults.innerHTML = '<p class="p-4 text-center text-xs text-[var(--text-muted)] font-mono-code">Mulai mengetik untuk mencari komponen...</p>';
+          return;
+        }
+
+        const matched = allComponents.filter((c: any) => c.searchKey.includes(query));
+        if (matched.length === 0) {
+          modalResults.innerHTML = '<p class="p-4 text-center text-xs text-[var(--text-muted)]">Tidak ada komponen yang cocok.</p>';
+          return;
+        }
+
+        modalResults.innerHTML = matched.slice(0, 8).map((comp: any) => {
+          return `
+            <a href="/komponen/${comp.id}" class="block p-3 rounded-lg hover:bg-[var(--border-main)] transition-colors">
+              <div class="font-medium text-[var(--text-main)] text-sm flex items-center justify-between">
+                <span>${comp.name} <span class="text-xs text-[var(--text-muted)] font-normal">(${comp.nameIndo})</span></span>
+                <span class="text-xs font-mono-code text-blue-600 dark:text-blue-400 font-semibold">Lihat Detail →</span>
+              </div>
+              <p class="text-xs text-[var(--text-muted)] truncate mt-0.5">${comp.summary}</p>
+            </a>
+          `;
+        }).join('');
+      });
+
+      // 3. Mobile Drawer Navigation Logic
+      const drawer = document.getElementById('mobile-drawer');
+      const backdrop = document.getElementById('mobile-drawer-backdrop');
+      const openDrawerBtn = document.getElementById('mobile-menu-open-btn');
+      const closeDrawerBtn = document.getElementById('mobile-drawer-close-btn');
+
+      function openDrawer() {
+        drawer?.classList.remove('translate-x-full');
+        backdrop?.classList.remove('opacity-0', 'pointer-events-none');
+        document.body.classList.add('overflow-hidden');
+        openDrawerBtn?.setAttribute('aria-expanded', 'true');
+      }
+
+      function closeDrawer() {
+        drawer?.classList.add('translate-x-full');
+        backdrop?.classList.add('opacity-0', 'pointer-events-none');
+        document.body.classList.remove('overflow-hidden');
+        openDrawerBtn?.setAttribute('aria-expanded', 'false');
+      }
+
+      openDrawerBtn?.addEventListener('click', openDrawer);
+      closeDrawerBtn?.addEventListener('click', closeDrawer);
+      backdrop?.addEventListener('click', closeDrawer);
+
+      // Auto close drawer when any navigation link inside drawer is clicked
+      const drawerLinks = document.querySelectorAll('.mobile-drawer-link');
+      drawerLinks.forEach(link => {
+        link.addEventListener('click', closeDrawer);
+      });
+
+      // Keyboard Shortcut: Cmd/Ctrl + K or Escape
+      window.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+          e.preventDefault();
+          if (searchModal?.classList.contains('hidden')) {
+            openSearch();
+          } else {
+            closeSearch();
+          }
+        }
+        if (e.key === 'Escape') {
+          if (!searchModal?.classList.contains('hidden')) closeSearch();
+          if (!drawer?.classList.contains('translate-x-full')) closeDrawer();
+        }
+      });
+    </script>
+  </body>
+</html>

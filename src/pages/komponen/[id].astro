@@ -1,0 +1,541 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { COMPONENTS } from '../../data/components';
+
+export function getStaticPaths() {
+  return COMPONENTS.map((comp) => ({
+    params: { id: comp.id },
+    props: { comp },
+  }));
+}
+
+const { comp } = Astro.props;
+---
+
+<Layout 
+  title={`${comp.name} (${comp.nameIndo}) — Panduan & Anatomi UI/UX`}
+  description={comp.summary}
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <!-- Breadcrumbs -->
+    <nav aria-label="Breadcrumb" class="text-xs font-mono-code mb-8">
+      <ol class="flex items-center gap-2 text-[var(--text-muted)]">
+        <li><a href="/" class="hover:text-[var(--text-main)] transition-colors">Semua Komponen</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="capitalize text-blue-600 dark:text-blue-400">{comp.categoryLabel}</li>
+        <li aria-hidden="true">/</li>
+        <li aria-current="page" class="font-semibold text-[var(--text-main)]">{comp.name}</li>
+      </ol>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pb-8 border-b border-[var(--border-main)] mb-10">
+      <div class="flex flex-wrap items-center gap-2 mb-3">
+        <span class="px-2.5 py-0.5 rounded-full text-xs font-mono-code bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 font-medium">
+          {comp.categoryLabel}
+        </span>
+        <span class="px-2.5 py-0.5 rounded-full text-xs font-mono-code bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-medium">
+          WAI-ARIA Compliant
+        </span>
+      </div>
+
+      <h1 class="font-serif-display text-4xl sm:text-6xl text-[var(--text-main)] font-normal tracking-tight mb-2">
+        {comp.name}
+      </h1>
+      <p class="text-base sm:text-lg font-medium text-slate-700 dark:text-slate-300 mb-4">
+        {comp.nameIndo}
+      </p>
+
+      <!-- Aliases / Also Known As -->
+      <div class="p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border-main)] text-xs font-mono-code mb-6">
+        <span class="text-[var(--text-muted)] block mb-1.5 font-bold uppercase tracking-wider text-[10px]">
+          Juga Dikenal Sebagai (Dalam Berbagai Design System):
+        </span>
+        <div class="flex flex-wrap gap-2">
+          {comp.alsoKnownAs.map((alias) => (
+            <span class="px-2 py-1 rounded bg-[var(--bg-main)] border border-[var(--border-main)] text-[var(--text-main)]">
+              {alias}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Overview Definition -->
+      <p class="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed max-w-3xl">
+        {comp.definition}
+      </p>
+    </header>
+
+    <!-- SECTION 1: INTERACTIVE LIVE SANDBOX -->
+    <section class="mb-14">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <span class="text-xs font-mono-code uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold block">
+            01 / INTERACTION PROOF
+          </span>
+          <h2 class="font-serif-display text-2xl sm:text-3xl text-[var(--text-main)]">
+            Interactive Live Sandbox
+          </h2>
+        </div>
+        <span class="text-xs font-mono-code text-[var(--text-muted)]">Coba klik & navigasi keyboard</span>
+      </div>
+
+      <div class="p-6 sm:p-10 rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] shadow-xs">
+        {comp.id === 'accordion' && (
+          <div class="max-w-xl mx-auto space-y-3" id="demo-accordion">
+            <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-white dark:bg-slate-900">
+              <h3>
+                <button 
+                  type="button" 
+                  aria-expanded="false" 
+                  class="demo-acc-btn w-full flex items-center justify-between p-4 text-left font-medium text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+                >
+                  <span>1. Apa keunggulan belanja di toko online ini?</span>
+                  <svg class="demo-acc-chevron w-4 h-4 text-slate-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+              </h3>
+              <div class="demo-acc-panel hidden px-4 pb-4 pt-1 text-sm text-slate-600 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800/50">
+                Semua produk kami 100% original, dilengkapi garansi resmi 1 tahun, serta gratis ongkos kirim ke seluruh Indonesia untuk transaksi di atas Rp 200.000.
+              </div>
+            </div>
+
+            <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-white dark:bg-slate-900">
+              <h3>
+                <button 
+                  type="button" 
+                  aria-expanded="false" 
+                  class="demo-acc-btn w-full flex items-center justify-between p-4 text-left font-medium text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+                >
+                  <span>2. Berapa lama proses pengiriman barang?</span>
+                  <svg class="demo-acc-chevron w-4 h-4 text-slate-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+              </h3>
+              <div class="demo-acc-panel hidden px-4 pb-4 pt-1 text-sm text-slate-600 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800/50">
+                Pengiriman wilayah Jabodetabek memakan waktu 1-2 hari kerja, sedangkan luar pulau Jawa rata-rata 2-4 hari kerja via JNE / SiCepat.
+              </div>
+            </div>
+          </div>
+        )}
+
+        {comp.id === 'modal' && (
+          <div class="text-center py-6">
+            <button 
+              id="open-modal-demo"
+              type="button" 
+              class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm rounded-xl shadow-sm transition-transform active:scale-95"
+            >
+              Buka Demo Modal Dialog
+            </button>
+
+            <!-- Dialog Element -->
+            <dialog id="modal-demo-dialog" class="rounded-2xl p-6 backdrop:bg-slate-950/70 backdrop:backdrop-blur-xs border border-slate-200 dark:border-slate-800 shadow-2xl max-w-md w-full bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-lg font-bold">Hapus Proyek Website?</h3>
+                <form method="dialog"><button class="p-1 text-slate-400 hover:text-slate-600">✕</button></form>
+              </div>
+              <p class="text-sm text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+                Tindakan ini akan menghapus seluruh data domain, SSL, dan deployment terkait. Anda tidak dapat membatalkannya.
+              </p>
+              <div class="flex justify-end gap-3">
+                <form method="dialog"><button class="px-4 py-2 text-xs font-semibold rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">Batal</button></form>
+                <form method="dialog"><button class="px-4 py-2 text-xs font-semibold rounded-lg bg-red-600 text-white hover:bg-red-700">Ya, Hapus Permanen</button></form>
+              </div>
+            </dialog>
+          </div>
+        )}
+
+        {comp.id === 'tabs' && (
+          <div class="max-w-xl mx-auto">
+            <div class="border-b border-slate-200 dark:border-slate-800 mb-4" role="tablist">
+              <div class="flex space-x-6" id="demo-tabs-nav">
+                <button role="tab" aria-selected="true" class="demo-tab-item py-2.5 border-b-2 border-blue-600 text-blue-600 font-bold text-sm" data-target="tab-overview">
+                  Ringkasan
+                </button>
+                <button role="tab" aria-selected="false" class="demo-tab-item py-2.5 border-b-2 border-transparent text-slate-500 hover:text-slate-800 text-sm" data-target="tab-specs">
+                  Spesifikasi
+                </button>
+                <button role="tab" aria-selected="false" class="demo-tab-item py-2.5 border-b-2 border-transparent text-slate-500 hover:text-slate-800 text-sm" data-target="tab-reviews">
+                  Ulasan (24)
+                </button>
+              </div>
+            </div>
+            <div id="tab-overview" class="demo-tab-content text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Produk ini didesain dengan presisi industri menggunakan material daur ulang ramah lingkungan dan baterai tahan hingga 48 jam pemakaian nonstop.
+            </div>
+            <div id="tab-specs" class="demo-tab-content hidden text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Dimensi: 140 x 70 x 8 mm | Bobot: 175 gram | Koneksi: Bluetooth 5.3, USB-C fast charging.
+            </div>
+            <div id="tab-reviews" class="demo-tab-content hidden text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              ⭐ 4.9 / 5.0 — "Kualitas material sangat kokoh dan responsif. Pengiriman super kilat!" — Andi P.
+            </div>
+          </div>
+        )}
+
+        {comp.id === 'badge' && (
+          <div class="flex flex-wrap items-center justify-center gap-3 py-4">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              Selesai / Terkirim
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+              Menunggu Pembayaran
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300">
+              Gagal / Dibatalkan
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300">
+              Sedang Dikirim
+            </span>
+          </div>
+        )}
+
+        {comp.id === 'button' && (
+          <div class="flex flex-wrap items-center justify-center gap-4 py-4">
+            <button class="px-4 py-2 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-xs font-semibold rounded-lg shadow-sm transition">
+              Primary Action
+            </button>
+            <button class="px-4 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-semibold rounded-lg transition">
+              Secondary
+            </button>
+            <button class="px-4 py-2 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-semibold rounded-lg transition">
+              Outline
+            </button>
+            <button class="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold rounded-lg transition">
+              Destructive
+            </button>
+          </div>
+        )}
+
+        {comp.id === 'toggle-switch' && (
+          <div class="flex items-center justify-center gap-4 py-4">
+            <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Aktifkan Notifikasi WhatsApp:</span>
+            <button 
+              id="demo-toggle"
+              type="button" 
+              role="switch" 
+              aria-checked="true" 
+              class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-blue-600 transition-colors duration-200"
+            >
+              <span id="demo-toggle-thumb" class="inline-block h-5 w-5 translate-x-5 transform rounded-full bg-white transition duration-200 shadow"></span>
+            </button>
+          </div>
+        )}
+
+        {comp.id !== 'accordion' && comp.id !== 'modal' && comp.id !== 'tabs' && comp.id !== 'badge' && comp.id !== 'button' && comp.id !== 'toggle-switch' && (
+          <div class="text-center py-6">
+            <div class="w-full max-w-sm mx-auto p-4 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)]">
+              <div class="aspect-[4/3] w-3/4 mx-auto mb-3" set:html={comp.svgIcon} />
+              <p class="text-xs text-[var(--text-muted)] font-mono-code">
+                Komponen {comp.name} telah dioptimasi untuk rendering semantik & WAI-ARIA.
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- SECTION 2: ANATOMY BREAKDOWN -->
+    <section class="mb-14">
+      <div class="mb-4">
+        <span class="text-xs font-mono-code uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold block">
+          02 / BLUEPRINT ANATOMY
+        </span>
+        <h2 class="font-serif-display text-2xl sm:text-3xl text-[var(--text-main)]">
+          Anatomi Struktur Komponen
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border border-[var(--border-main)] rounded-2xl p-6 sm:p-8 bg-[var(--bg-card)]">
+        <!-- SVG Wireframe Visual -->
+        <div class="lg:col-span-5 aspect-[4/3] rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] p-4 flex items-center justify-center">
+          <div class="w-full h-full text-[var(--text-main)]" set:html={comp.svgIcon} />
+        </div>
+
+        <!-- Breakdown List -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="divide-y divide-[var(--border-main)]">
+            {comp.anatomy.map((item, idx) => (
+              <div class="py-3 first:pt-0 last:pb-0">
+                <div class="flex items-center gap-2">
+                  <span class="w-5 h-5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300 flex items-center justify-center text-[10px] font-mono-code font-bold">
+                    {idx + 1}
+                  </span>
+                  <span class="text-sm font-bold text-[var(--text-main)]">{item.part}</span>
+                  <span class="text-xs text-[var(--text-muted)] font-mono-code">({item.nameIndo})</span>
+                </div>
+                <p class="text-xs text-[var(--text-muted)] mt-1 ml-7 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: DO'S AND DON'TS (UX GUIDELINES) -->
+    <section class="mb-14">
+      <div class="mb-4">
+        <span class="text-xs font-mono-code uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold block">
+          03 / UX PRINCIPLES
+        </span>
+        <h2 class="font-serif-display text-2xl sm:text-3xl text-[var(--text-main)]">
+          Panduan Penggunaan & Anti-Patterns
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- DO'S -->
+        <div class="border border-emerald-200 dark:border-emerald-900/50 bg-emerald-50/40 dark:bg-emerald-950/20 p-6 rounded-2xl">
+          <div class="flex items-center gap-2 mb-4 text-emerald-700 dark:text-emerald-400 font-semibold text-sm">
+            <span class="w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900 flex items-center justify-center text-xs">✓</span>
+            <span>Kapan TEPAT Digunakan (Best Practice)</span>
+          </div>
+          <ul class="space-y-3 text-xs text-emerald-900 dark:text-emerald-200/90 leading-relaxed">
+            {comp.useCases.map((uc) => (
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-500 font-bold">•</span>
+                <div>
+                  <strong class="block text-emerald-950 dark:text-emerald-100">{uc.title}</strong>
+                  {uc.description}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- DON'TS -->
+        <div class="border border-rose-200 dark:border-rose-900/50 bg-rose-50/40 dark:bg-rose-950/20 p-6 rounded-2xl">
+          <div class="flex items-center gap-2 mb-4 text-rose-700 dark:text-rose-400 font-semibold text-sm">
+            <span class="w-6 h-6 rounded-full bg-rose-100 dark:bg-rose-900 flex items-center justify-center text-xs">✕</span>
+            <span>Kapan DILARANG Digunakan (Anti-Patterns)</span>
+          </div>
+          <ul class="space-y-3 text-xs text-rose-900 dark:text-rose-200/90 leading-relaxed">
+            {comp.antiPatterns.map((ap) => (
+              <li class="flex items-start gap-2">
+                <span class="text-rose-500 font-bold">•</span>
+                <div>
+                  <strong class="block text-rose-950 dark:text-rose-100">{ap.title}</strong>
+                  {ap.description}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: ACCESSIBILITY & WAI-ARIA -->
+    <section class="mb-14">
+      <div class="mb-4">
+        <span class="text-xs font-mono-code uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold block">
+          04 / WAI-ARIA & ACCESSIBILITY
+        </span>
+        <h2 class="font-serif-display text-2xl sm:text-3xl text-[var(--text-main)]">
+          Spesifikasi Aksesibilitas & Keyboard
+        </h2>
+      </div>
+
+      <div class="border border-[var(--border-main)] rounded-2xl p-6 sm:p-8 bg-[var(--bg-card)] space-y-6">
+        <div>
+          <h4 class="text-xs font-mono-code uppercase tracking-wider text-[var(--text-muted)] mb-2 font-bold">
+            Tag Semantik HTML Rekomendasi:
+          </h4>
+          <code class="text-xs font-mono-code px-3 py-1.5 rounded-lg bg-[var(--bg-main)] border border-[var(--border-main)] text-blue-600 dark:text-blue-400 inline-block">
+            {comp.accessibility.semanticTag}
+          </code>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-mono-code uppercase tracking-wider text-[var(--text-muted)] mb-2 font-bold">
+            Atribut WAI-ARIA Wajib:
+          </h4>
+          <ul class="space-y-1.5 text-xs text-[var(--text-main)] font-mono-code">
+            {comp.accessibility.ariaAttributes.map((attr) => (
+              <li class="flex items-start gap-2">
+                <span class="text-blue-500">→</span>
+                <span>{attr}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {comp.accessibility.keyboardNavigation.length > 0 && (
+          <div>
+            <h4 class="text-xs font-mono-code uppercase tracking-wider text-[var(--text-muted)] mb-2 font-bold">
+              Matriks Navigasi Keyboard:
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              {comp.accessibility.keyboardNavigation.map((kn) => (
+                <div class="p-3 rounded-lg bg-[var(--bg-main)] border border-[var(--border-main)] flex items-start gap-3">
+                  <kbd class="px-2 py-1 rounded bg-[var(--bg-card)] border border-[var(--border-main)] font-mono-code text-[11px] font-bold shrink-0">
+                    {kn.key}
+                  </kbd>
+                  <span class="text-[var(--text-muted)] leading-relaxed">{kn.action}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- SECTION 5: PRODUCTION AI PROMPT -->
+    <section class="mb-14">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <span class="text-xs font-mono-code uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold block">
+            05 / AI IMPLEMENTATION PROMPT
+          </span>
+          <h2 class="font-serif-display text-2xl sm:text-3xl text-[var(--text-main)]">
+            Prompt AI Production (Siap Pakai)
+          </h2>
+        </div>
+        <button
+          id="copy-prompt-btn"
+          type="button"
+          class="px-4 py-2 text-xs font-mono-code font-bold rounded-lg bg-blue-600 text-white hover:bg-blue-700 active:scale-95 transition-transform flex items-center gap-2 shadow-sm"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+          <span id="copy-btn-text">Salin Prompt AI</span>
+        </button>
+      </div>
+
+      <div class="relative rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] p-6 font-mono-code text-xs leading-relaxed text-[var(--text-main)] overflow-x-auto shadow-inner">
+        <pre id="prompt-content" class="whitespace-pre-wrap">{comp.aiPrompt}</pre>
+      </div>
+    </section>
+
+    <!-- SECTION 6: CODE IMPLEMENTATIONS -->
+    <section class="mb-14">
+      <div class="mb-4">
+        <span class="text-xs font-mono-code uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold block">
+          06 / CODE BLUEPRINTS
+        </span>
+        <h2 class="font-serif-display text-2xl sm:text-3xl text-[var(--text-main)]">
+          Contoh Kode Implementasi
+        </h2>
+      </div>
+
+      <div class="border border-[var(--border-main)] rounded-2xl overflow-hidden bg-[var(--bg-card)]">
+        <div class="p-6 overflow-x-auto text-xs font-mono-code">
+          <pre class="text-slate-800 dark:text-slate-200"><code>{comp.codeSnippets.html}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: REAL-WORLD DESIGN SYSTEM REFERENCES -->
+    <section class="border-t border-[var(--border-main)] pt-10">
+      <h3 class="font-serif-display text-xl text-[var(--text-main)] mb-4">
+        Referensi Implementasi di Design Systems Terkemuka:
+      </h3>
+      <div class="flex flex-wrap gap-3">
+        {comp.designSystems.map((ds) => (
+          <a 
+            href={ds.url} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="px-4 py-2 rounded-lg border border-[var(--border-main)] bg-[var(--bg-card)] hover:border-blue-500 text-xs font-mono-code text-[var(--text-main)] flex items-center gap-2 transition-all hover:-translate-y-0.5"
+          >
+            <span>{ds.name}</span>
+            <span class="text-[10px] text-[var(--text-muted)]">({ds.framework})</span>
+            <svg class="w-3 h-3 text-[var(--text-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <!-- Detail Page Interaction Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Accordion Demo Script
+      const accBtns = document.querySelectorAll<HTMLButtonElement>('.demo-acc-btn');
+      accBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          const panel = btn.parentElement?.nextElementSibling as HTMLElement | null;
+          const chevron = btn.querySelector('.demo-acc-chevron');
+
+          if (isExpanded) {
+            btn.setAttribute('aria-expanded', 'false');
+            panel?.classList.add('hidden');
+            chevron?.classList.remove('rotate-180');
+          } else {
+            btn.setAttribute('aria-expanded', 'true');
+            panel?.classList.remove('hidden');
+            chevron?.classList.add('rotate-180');
+          }
+        });
+      });
+
+      // 2. Modal Demo Script
+      const openModalBtn = document.getElementById('open-modal-demo');
+      const modalDialog = document.getElementById('modal-demo-dialog') as HTMLDialogElement | null;
+      openModalBtn?.addEventListener('click', () => {
+        modalDialog?.showModal();
+      });
+
+      // 3. Tabs Demo Script
+      const tabBtns = document.querySelectorAll<HTMLButtonElement>('.demo-tab-item');
+      const tabContents = document.querySelectorAll<HTMLElement>('.demo-tab-content');
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.dataset.target;
+          tabBtns.forEach(b => {
+            b.setAttribute('aria-selected', 'false');
+            b.classList.remove('border-blue-600', 'text-blue-600', 'font-bold');
+            b.classList.add('border-transparent', 'text-slate-500');
+          });
+          btn.setAttribute('aria-selected', 'true');
+          btn.classList.add('border-blue-600', 'text-blue-600', 'font-bold');
+          btn.classList.remove('border-transparent', 'text-slate-500');
+
+          tabContents.forEach(content => {
+            if (content.id === targetId) {
+              content.classList.remove('hidden');
+            } else {
+              content.classList.add('hidden');
+            }
+          });
+        });
+      });
+
+      // 4. Toggle Switch Demo Script
+      const toggleBtn = document.getElementById('demo-toggle');
+      const toggleThumb = document.getElementById('demo-toggle-thumb');
+      toggleBtn?.addEventListener('click', () => {
+        const isChecked = toggleBtn.getAttribute('aria-checked') === 'true';
+        if (isChecked) {
+          toggleBtn.setAttribute('aria-checked', 'false');
+          toggleBtn.classList.remove('bg-blue-600');
+          toggleBtn.classList.add('bg-slate-300', 'dark:bg-slate-700');
+          toggleThumb?.classList.remove('translate-x-5');
+          toggleThumb?.classList.add('translate-x-0');
+        } else {
+          toggleBtn.setAttribute('aria-checked', 'true');
+          toggleBtn.classList.add('bg-blue-600');
+          toggleBtn.classList.remove('bg-slate-300', 'dark:bg-slate-700');
+          toggleThumb?.classList.add('translate-x-5');
+          toggleThumb?.classList.remove('translate-x-0');
+        }
+      });
+
+      // 5. Copy AI Prompt Script
+      const copyBtn = document.getElementById('copy-prompt-btn');
+      const copyBtnText = document.getElementById('copy-btn-text');
+      const promptContent = document.getElementById('prompt-content');
+
+      copyBtn?.addEventListener('click', () => {
+        if (!promptContent) return;
+        navigator.clipboard.writeText(promptContent.textContent || '').then(() => {
+          if (copyBtnText) copyBtnText.textContent = '✓ Tersalin!';
+          setTimeout(() => {
+            if (copyBtnText) copyBtnText.textContent = 'Salin Prompt AI';
+          }, 2000);
+        });
+      });
+    });
+  </script>
+</Layout>

@@ -1,0 +1,1262 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Studi Kasus UI/UX: Dealer Hino Official — Bedah Visual & Anatomi Komponen B2B"
+  description="Analisis mendalam UI/UX antarmuka komersial B2B pada situs dealerhinoofficial.com, lengkap dengan diagram ilustrasi visual wireframe komponen."
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Breadcrumbs -->
+    <nav aria-label="Breadcrumb" class="text-xs font-mono-code mb-8">
+      <ol class="flex items-center gap-2 text-[var(--text-muted)]">
+        <li><a href="/" class="hover:text-[var(--text-main)] transition-colors">Semua Komponen</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-red-600 dark:text-red-400 font-semibold">Studi Kasus Real-World</li>
+        <li aria-hidden="true">/</li>
+        <li aria-current="page" class="font-semibold text-[var(--text-main)]">Dealer Hino Official</li>
+      </ol>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="border-b border-[var(--border-main)] pb-8 mb-10">
+      <div class="flex flex-wrap items-center gap-2 mb-3">
+        <span class="px-2.5 py-0.5 rounded-full text-xs font-mono-code bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300 font-bold">
+          B2B Commercial Automotive
+        </span>
+        <span class="px-2.5 py-0.5 rounded-full text-xs font-mono-code bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300 font-medium">
+          Astro SSG + Tailwind CSS
+        </span>
+        <a 
+          href="https://dealerhinoofficial.com/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="inline-flex items-center gap-1 text-xs font-mono-code text-blue-600 dark:text-blue-400 hover:underline ml-auto"
+        >
+          <span>Buka Situs Asli</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+
+      <h1 class="font-serif-display text-4xl sm:text-6xl text-[var(--text-main)] font-normal tracking-tight mb-4">
+        Bedah Visual UI/UX: <br/>
+        <em class="italic text-red-600 dark:text-red-500 font-serif-display">dealerhinoofficial.com</em>
+      </h1>
+
+      <p class="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed max-w-3xl">
+        Kajian visual dan arsitektur komponen antarmuka web komersial bernilai transaksi tinggi (truk niaga ratusan juta hingga miliaran rupiah). Dilengkapi diagram wireframe visual, anatomi tombol sentuh mobile, dan perbandingan psikologi konversi.
+      </p>
+    </header>
+
+    <!-- SECTION 0: GLOBAL LAYOUT WIREFRAME (DESKTOP & MOBILE MACRO STRUCTURE) -->
+    <section class="mb-14 p-6 sm:p-8 rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)]">
+      <div class="mb-6">
+        <span class="text-xs font-mono-code uppercase tracking-wider text-red-600 dark:text-red-400 font-bold block mb-1">
+          MACRO WIREFRAME OVERVIEW
+        </span>
+        <h2 class="font-serif-display text-2xl sm:text-3xl text-[var(--text-main)]">
+          Peta Tata Letak Halaman (Macro Layout Blueprint)
+        </h2>
+        <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1">
+          Berikut adalah susunan zonasi komponen dari atas ke bawah pada layar desktop dan mobile:
+        </p>
+      </div>
+
+      <!-- Macro Diagram SVG Visualizer -->
+      <div class="p-4 sm:p-6 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] overflow-x-auto">
+        <svg viewBox="0 0 800 380" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto max-w-3xl mx-auto font-sans">
+          <!-- Desktop Mockup Frame -->
+          <g>
+            <rect x="20" y="20" width="480" height="340" rx="8" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5"/>
+            <!-- Top Browser Header Bar -->
+            <path d="M20 28C20 23.5817 23.5817 20 28 20H492C496.418 20 500 23.5817 500 28V44H20V28Z" fill="#F1F5F9" stroke="#0F172A" stroke-width="1.5"/>
+            <circle cx="35" cy="32" r="3" fill="#EF4444"/>
+            <circle cx="45" cy="32" r="3" fill="#F59E0B"/>
+            <circle cx="55" cy="32" r="3" fill="#10B981"/>
+            <rect x="75" y="26" width="200" height="12" rx="3" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+            <text x="85" y="35" fill="#64748B" font-size="7" font-family="monospace">https://dealerhinoofficial.com</text>
+
+            <!-- Sticky Header -->
+            <rect x="21" y="45" width="478" height="26" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+            <rect x="32" y="52" width="12" height="12" rx="2" fill="#DC2626"/>
+            <text x="48" y="61" fill="#0F172A" font-size="8" font-weight="bold">DEALER HINO RESMI</text>
+            <text x="260" y="61" fill="#64748B" font-size="7">Home   Line Up ▾   Layanan ▾   Artikel   Kontak</text>
+            <rect x="445" y="51" width="38" height="14" rx="3" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+            <text x="453" y="61" fill="#0F172A" font-size="7">🔍 Cari</text>
+
+            <!-- Hero Section Grid (55% / 45%) -->
+            <rect x="21" y="72" width="478" height="130" fill="#F8FAFC"/>
+            <!-- Left Text Column -->
+            <rect x="35" y="85" width="45" height="10" rx="2" fill="#FEE2E2"/>
+            <text x="40" y="92" fill="#DC2626" font-size="6" font-weight="bold">Euro4 Standard</text>
+            <rect x="35" y="100" width="180" height="12" rx="2" fill="#0F172A"/>
+            <rect x="35" y="115" width="140" height="10" rx="2" fill="#DC2626"/>
+            <rect x="35" y="132" width="190" height="6" rx="1" fill="#94A3B8"/>
+            <rect x="35" y="141" width="170" height="6" rx="1" fill="#94A3B8"/>
+            <!-- Dual CTAs -->
+            <rect x="35" y="156" width="65" height="16" rx="3" fill="#DC2626"/>
+            <text x="42" y="167" fill="#FFFFFF" font-size="6" font-weight="bold">Lihat Line-Up Unit ↓</text>
+            <rect x="106" y="156" width="60" height="16" rx="3" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+            <text x="113" y="167" fill="#0F172A" font-size="6">Proses Pembelian</text>
+
+            <!-- Right Hero Image & Floating Trust Badge -->
+            <rect x="250" y="85" width="235" height="105" rx="6" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1"/>
+            <text x="330" y="135" fill="#64748B" font-size="9" font-weight="bold">[Foto Armada Truk Hino]</text>
+            <!-- Floating Trust Badge -->
+            <rect x="260" y="145" width="145" height="36" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.1))"/>
+            <rect x="260" y="145" width="4" height="36" rx="1" fill="#DC2626"/>
+            <circle cx="280" cy="163" r="11" fill="#CBD5E1"/>
+            <text x="275" y="166" fill="#475569" font-size="7" font-weight="bold">EM</text>
+            <text x="296" y="156" fill="#94A3B8" font-size="6" font-weight="bold">PARTNER PENGADAAN</text>
+            <text x="296" y="165" fill="#0F172A" font-size="8" font-weight="bold">Elgin Marchlouis</text>
+            <circle cx="299" cy="173" r="2.5" fill="#10B981"/>
+            <text x="305" y="175" fill="#059669" font-size="6" font-weight="bold">Fast Respon Jam Kerja</text>
+
+            <!-- Marquee Bar -->
+            <rect x="21" y="203" width="478" height="18" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+            <text x="130" y="215" fill="#94A3B8" font-size="7" font-weight="bold">• LOGISTIK & DISTRIBUSI   • KONSTRUKSI   • PERTAMBANGAN   • AGRO</text>
+
+            <!-- 3 Stat Metrics -->
+            <rect x="35" y="228" width="135" height="28" rx="4" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+            <text x="45" y="239" fill="#94A3B8" font-size="6">Unit Terjual</text>
+            <text x="45" y="250" fill="#0F172A" font-size="9" font-weight="bold">1000+ Unit</text>
+
+            <rect x="192" y="228" width="135" height="28" rx="4" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+            <text x="202" y="239" fill="#94A3B8" font-size="6">Pengalaman Sales</text>
+            <text x="202" y="250" fill="#0F172A" font-size="9" font-weight="bold">12 Tahun</text>
+
+            <rect x="350" y="228" width="135" height="28" rx="4" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+            <text x="360" y="239" fill="#94A3B8" font-size="6">Respon Sales</text>
+            <text x="360" y="250" fill="#DC2626" font-size="9" font-weight="bold">Cepat & Terjadwal</text>
+
+            <!-- Line-up 3 Cards Preview -->
+            <rect x="35" y="266" width="135" height="80" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+            <rect x="35" y="266" width="135" height="15" fill="#F1F5F9"/>
+            <text x="42" y="277" fill="#0F172A" font-size="7" font-weight="bold">HINO 300 SERIES</text>
+            <rect x="192" y="266" width="135" height="80" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+            <rect x="192" y="266" width="135" height="15" fill="#F1F5F9"/>
+            <text x="199" y="277" fill="#0F172A" font-size="7" font-weight="bold">HINO 500 SERIES</text>
+            <rect x="350" y="266" width="135" height="80" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+            <rect x="350" y="266" width="135" height="15" fill="#F1F5F9"/>
+            <text x="357" y="277" fill="#0F172A" font-size="7" font-weight="bold">HINO 700 SERIES</text>
+          </g>
+
+          <!-- Mobile Phone Frame Mockup -->
+          <g>
+            <rect x="540" y="20" width="220" height="340" rx="20" fill="#0F172A" stroke="#0F172A" stroke-width="2"/>
+            <!-- Mobile Screen Screen Area -->
+            <rect x="545" y="25" width="210" height="330" rx="16" fill="#FFFFFF"/>
+            <!-- Dynamic Island Notch -->
+            <rect x="620" y="28" width="60" height="8" rx="4" fill="#0F172A"/>
+
+            <!-- Mobile Header -->
+            <rect x="545" y="40" width="210" height="24" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+            <rect x="553" y="46" width="12" height="12" rx="2" fill="#DC2626"/>
+            <text x="570" y="55" fill="#0F172A" font-size="7" font-weight="bold">DEALER HINO</text>
+            <!-- Mobile Hamburger -->
+            <rect x="732" y="47" width="14" height="10" rx="2" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="0.8"/>
+            <line x1="735" y1="50" x2="743" y2="50" stroke="#0F172A" stroke-width="1"/>
+            <line x1="735" y1="52" x2="743" y2="52" stroke="#0F172A" stroke-width="1"/>
+            <line x1="735" y1="54" x2="743" y2="54" stroke="#0F172A" stroke-width="1"/>
+
+            <!-- Mobile Content Flow: Headline -> Subhead -> Image -> CTA -->
+            <rect x="555" y="70" width="40" height="8" rx="2" fill="#FEE2E2"/>
+            <text x="558" y="76" fill="#DC2626" font-size="5" font-weight="bold">Euro4 2026</text>
+            <rect x="555" y="82" width="150" height="10" rx="2" fill="#0F172A"/>
+            <rect x="555" y="95" width="120" height="8" rx="2" fill="#DC2626"/>
+            <rect x="555" y="107" width="190" height="5" rx="1" fill="#94A3B8"/>
+            <rect x="555" y="115" width="160" height="5" rx="1" fill="#94A3B8"/>
+
+            <!-- Mobile Image & Trust Badge -->
+            <rect x="555" y="125" width="190" height="85" rx="6" fill="#E2E8F0"/>
+            <text x="615" y="165" fill="#64748B" font-size="8">[Foto Truk Hino]</text>
+            <!-- Mobile Trust Card -->
+            <rect x="563" y="170" width="174" height="34" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.1))"/>
+            <rect x="563" y="170" width="3" height="34" rx="1" fill="#DC2626"/>
+            <circle cx="578" cy="187" r="9" fill="#CBD5E1"/>
+            <text x="592" y="181" fill="#0F172A" font-size="7" font-weight="bold">Elgin Marchlouis</text>
+            <text x="592" y="190" fill="#059669" font-size="6" font-weight="bold">• Fast Respon WA</text>
+
+            <!-- Mobile Dual CTAs -->
+            <rect x="555" y="218" width="190" height="18" rx="4" fill="#DC2626"/>
+            <text x="610" y="230" fill="#FFFFFF" font-size="7" font-weight="bold">Lihat Line-Up Unit ↓</text>
+            <rect x="555" y="240" width="190" height="18" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+            <text x="620" y="252" fill="#0F172A" font-size="7">Proses Pembelian</text>
+
+            <!-- Mobile Sticky Bottom Floating Action Bar -->
+            <rect x="545" y="318" width="210" height="37" fill="#0F172A"/>
+            <rect x="553" y="323" width="95" height="24" rx="6" fill="#1E293B"/>
+            <text x="585" y="338" fill="#FFFFFF" font-size="7" font-weight="bold">📞 Telepon</text>
+            <rect x="653" y="323" width="95" height="24" rx="6" fill="#16A34A"/>
+            <text x="680" y="338" fill="#FFFFFF" font-size="7" font-weight="bold">💬 WhatsApp</text>
+            <!-- iPhone Bottom Indicator Bar -->
+            <rect x="615" y="351" width="70" height="2" rx="1" fill="#64748B"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- DETAILED COMPONENT WIREFRAMES (1 TO 4) -->
+    <div class="space-y-16 mb-16">
+      
+      <!-- 1. THE FLOATING TRUST BADGE DETAILED BLUEPRINT -->
+      <section class="border border-[var(--border-main)] rounded-2xl p-6 sm:p-8 bg-[var(--bg-card)]">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-red-600 text-white font-mono-code font-bold flex items-center justify-center text-sm">
+              01
+            </span>
+            <h2 class="font-serif-display text-2xl sm:text-3xl text-[var(--text-main)]">
+              Anatomi Visual: Floating Trust Badge
+            </h2>
+          </div>
+          <span class="text-xs font-mono-code text-blue-600 dark:text-blue-400">Card + Avatar + Animation</span>
+        </div>
+
+        <p class="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed mb-6">
+          Ilustrasi komponen kartu melayang di atas gambar truk dengan garis aksen merah Hino, foto konsultan resmi, dan titik berdenyut indikator online.
+        </p>
+
+        <!-- SVG Detailed Blueprint for Trust Card -->
+        <div class="p-6 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] mb-6">
+          <svg viewBox="0 0 600 220" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto max-w-xl mx-auto">
+            <!-- Background Truck Canvas Representation -->
+            <rect x="20" y="20" width="560" height="180" rx="8" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1"/>
+            <text x="210" y="100" fill="#94A3B8" font-size="14" font-weight="bold">[Area Foto Truk Hino HD]</text>
+            
+            <!-- Glassmorphism Floating Trust Card -->
+            <rect x="50" y="80" width="340" height="96" rx="12" fill="#FFFFFF" fill-opacity="0.95" stroke="#E2E8F0" stroke-width="1.5" filter="drop-shadow(0 10px 15px rgba(0,0,0,0.15))"/>
+            <!-- Left Accent Border (Red Hino) -->
+            <path d="M50 92C50 85.3726 55.3726 80 62 80H64V176H62C55.3726 176 50 170.627 50 164V92Z" fill="#DC2626"/>
+            
+            <!-- Avatar Image with Border -->
+            <rect x="76" y="98" width="60" height="60" rx="8" fill="#CBD5E1" stroke="#E2E8F0" stroke-width="1"/>
+            <circle cx="106" cy="120" r="14" fill="#94A3B8"/>
+            <path d="M92 150C92 138 98 134 106 134C114 134 120 138 120 150" fill="#94A3B8"/>
+
+            <!-- Text Content & Badges -->
+            <text x="150" y="108" fill="#64748B" font-size="9" font-weight="bold" letter-spacing="1">PARTNER PENGADAAN ARMADA</text>
+            <text x="150" y="128" fill="#0F172A" font-size="16" font-weight="900">Elgin Marchlouis</text>
+            <rect x="282" y="117" width="40" height="14" rx="3" fill="#DC2626"/>
+            <text x="289" y="127" fill="#FFFFFF" font-size="7" font-weight="bold">RESMI</text>
+            
+            <!-- Pulsing Status Dot & Text -->
+            <circle cx="156" cy="147" r="4" fill="#10B981"/>
+            <circle cx="156" cy="147" r="8" fill="#10B981" fill-opacity="0.3"/>
+            <text x="168" y="150" fill="#059669" font-size="10" font-weight="bold" letter-spacing="0.5">Fast Respon Jam Kerja</text>
+
+            <!-- Callout pointer 1: Accent Line -->
+            <path d="M50 128L15 128" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="2 2"/>
+            <text x="0" y="120" fill="#DC2626" font-size="8" font-family="monospace">border-l-4</text>
+
+            <!-- Callout pointer 2: Pulse Indicator -->
+            <path d="M300 150L440 150" stroke="#059669" stroke-width="1.5" stroke-dasharray="2 2"/>
+            <text x="445" y="153" fill="#059669" font-size="9" font-family="monospace">animate-ping dot (Online status)</text>
+          </svg>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <div class="p-4 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)]">
+            <strong class="text-[var(--text-main)] block mb-1">Psikologi Konversi:</strong>
+            <p class="text-[var(--text-muted)] leading-relaxed">
+              Pembeli fleet truk tidak percaya formulir anonim. Begitu mereka melihat foto Elgin dengan status <em>"Resmi"</em> dan <em>"Fast Respon"</em>, barrier psikologis langsung turun karena mereka merasa sedang berinteraksi langsung dengan konsultan ahli.
+            </p>
+          </div>
+          <div class="p-4 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)]">
+            <strong class="text-[var(--text-main)] block mb-1">Implementasi CSS Tailwind:</strong>
+            <code class="text-[11px] font-mono-code text-blue-600 dark:text-blue-400 block">
+              absolute bottom-4 sm:bottom-6 left-8 bg-white/95 backdrop-blur-sm border-l-4 border-hino-red shadow-lg
+            </code>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. MOBILE SLIDE-OVER DRAWER DETAILED BLUEPRINT -->
+      <section class="border border-[var(--border-main)] rounded-2xl p-6 sm:p-8 bg-[var(--bg-card)]">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-red-600 text-white font-mono-code font-bold flex items-center justify-center text-sm">
+              02
+            </span>
+            <h2 class="font-serif-display text-2xl sm:text-3xl text-[var(--text-main)]">
+              Anatomi Visual: Mobile Navigation Drawer (Offcanvas)
+            </h2>
+          </div>
+          <span class="text-xs font-mono-code text-blue-600 dark:text-blue-400">Drawer + Grouping + Micro-card</span>
+        </div>
+
+        <p class="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed mb-6">
+          Ilustrasi mendetail panel navigasi mobile yang meluncur dari kanan layar smartphone saat hamburger button disentuh:
+        </p>
+
+        <!-- SVG Detailed Phone Drawer Wireframe -->
+        <div class="p-6 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] mb-6">
+          <svg viewBox="0 0 700 360" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto max-w-2xl mx-auto">
+            <!-- Screen Darkened Backdrop (60% Black) -->
+            <rect x="20" y="20" width="660" height="320" rx="16" fill="#0F172A" fill-opacity="0.6"/>
+            <text x="60" y="180" fill="#FFFFFF" fill-opacity="0.6" font-size="14" font-weight="bold">[Backdrop Gelap Menutupi Halaman Utama]</text>
+
+            <!-- Slide-over Drawer Panel (Width 320px, Right 0) -->
+            <rect x="360" y="20" width="320" height="320" rx="0" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+            
+            <!-- Drawer Header (Navy Dark) -->
+            <rect x="360" y="20" width="320" height="42" fill="#0F172A"/>
+            <rect x="372" y="28" width="24" height="24" rx="4" fill="#DC2626"/>
+            <text x="404" y="38" fill="#FFFFFF" font-size="10" font-weight="900">DEALER HINO RESMI</text>
+            <text x="404" y="49" fill="#94A3B8" font-size="8">JAWA TIMUR • SIDOARJO</text>
+            <circle cx="660" cy="40" r="10" fill="#1E293B"/>
+            <text x="657" y="44" fill="#FFFFFF" font-size="11">✕</text>
+
+            <!-- Drawer Body Section 1: Armada & Produk -->
+            <text x="374" y="78" fill="#94A3B8" font-size="8" font-weight="bold" letter-spacing="1">ARMADA & PRODUK</text>
+            <!-- Line up button with Badge -->
+            <rect x="372" y="86" width="296" height="26" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+            <text x="384" y="103" fill="#0F172A" font-size="9" font-weight="bold">Line Up Truk Hino</text>
+            <rect x="625" y="91" width="35" height="15" rx="3" fill="#FEE2E2"/>
+            <text x="630" y="102" fill="#DC2626" font-size="7" font-weight="bold">46 Unit</text>
+
+            <!-- 3 Mini Cards (Dutro 300, Ranger 500, Profia 700) -->
+            <rect x="372" y="117" width="94" height="34" rx="5" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+            <text x="388" y="132" fill="#0F172A" font-size="8" font-weight="bold">Dutro 300</text>
+            <text x="388" y="142" fill="#64748B" font-size="7">Light Duty</text>
+
+            <rect x="473" y="117" width="94" height="34" rx="5" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+            <text x="488" y="132" fill="#0F172A" font-size="8" font-weight="bold">Ranger 500</text>
+            <text x="488" y="142" fill="#DC2626" font-size="7">Medium Duty</text>
+
+            <rect x="574" y="117" width="94" height="34" rx="5" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+            <text x="590" y="132" fill="#0F172A" font-size="8" font-weight="bold">Profia 700</text>
+            <text x="590" y="142" fill="#64748B" font-size="7">Heavy Duty</text>
+
+            <!-- Drawer Body Section 2: Layanan 3S -->
+            <text x="374" y="170" fill="#94A3B8" font-size="8" font-weight="bold" letter-spacing="1">LAYANAN PURNA JUAL (3S)</text>
+            <rect x="372" y="178" width="144" height="20" rx="4" fill="#F8FAFC"/>
+            <text x="380" y="191" fill="#475569" font-size="8">Program Servis & FSP</text>
+            <rect x="524" y="178" width="144" height="20" rx="4" fill="#F8FAFC"/>
+            <text x="532" y="191" fill="#475569" font-size="8">Suku Cadang Asli</text>
+
+            <!-- Bottom Sticky Footer in Drawer -->
+            <rect x="360" y="240" width="320" height="100" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+            <!-- Micro Sales Card -->
+            <rect x="372" y="248" width="296" height="38" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+            <circle cx="392" cy="267" r="12" fill="#CBD5E1"/>
+            <text x="388" y="270" fill="#475569" font-size="8" font-weight="bold">EM</text>
+            <text x="412" y="262" fill="#0F172A" font-size="9" font-weight="bold">Elgin Marchlouis</text>
+            <rect x="480" y="254" width="30" height="11" rx="2" fill="#DC2626"/>
+            <text x="484" y="262" fill="#FFFFFF" font-size="6" font-weight="bold">RESMI</text>
+            <text x="412" y="274" fill="#64748B" font-size="8">Konsultan Penjualan Truk Hino Jatim</text>
+
+            <!-- 2 Dual Call & WhatsApp Buttons -->
+            <rect x="372" y="294" width="144" height="34" rx="8" fill="#0F172A"/>
+            <text x="418" y="315" fill="#FFFFFF" font-size="9" font-weight="bold">📞 Telepon</text>
+            
+            <rect x="524" y="294" width="144" height="34" rx="8" fill="#16A34A"/>
+            <text x="562" y="315" fill="#FFFFFF" font-size="9" font-weight="bold">💬 WhatsApp</text>
+          </svg>
+        </div>
+
+        <div class="text-xs text-[var(--text-muted)] space-y-2">
+          <strong class="block text-[var(--text-main)]">Rasional UX Mobile:</strong>
+          <p>
+            Menu navigasi mobile diatur dalam kategori terstruktur (Armada, Layanan, Profil Sales) dan <strong>diakhiri dengan micro-card kontak sales di posisi paling bawah</strong> yang mudah dijangkau satu tangan. Ini memastikan pengguna yang tersesat di menu tetap punya jalan pintas untuk langsung menelepon sales.
+          </p>
+        </div>
+      </section>
+
+      <!-- 3. STICKY MOBILE BOTTOM BAR & SAFE-AREA INSET -->
+      <section class="border border-[var(--border-main)] rounded-2xl p-6 sm:p-8 bg-[var(--bg-card)]">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-red-600 text-white font-mono-code font-bold flex items-center justify-center text-sm">
+              03
+            </span>
+            <h2 class="font-serif-display text-2xl sm:text-3xl text-[var(--text-main)]">
+              Anatomi Visual: Sticky Mobile Bottom Action Bar (Safe-Area Aware)
+            </h2>
+          </div>
+          <span class="text-xs font-mono-code text-emerald-600 dark:text-emerald-400">Sticky Bottom + Safe Area Inset</span>
+        </div>
+
+        <p class="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed mb-6">
+          Komponen paling penting dalam konversi mobile: Bar aksi mengambang permanen di dasar layar ponsel yang menghitung jarak aman garis gestur iPhone (*home indicator*).
+        </p>
+
+        <!-- SVG Safe Area Inset Visualizer -->
+        <div class="p-6 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] mb-6">
+          <svg viewBox="0 0 600 240" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto max-w-xl mx-auto font-sans">
+            <!-- Mobile Viewport Canvas Representation -->
+            <rect x="40" y="20" width="520" height="200" rx="12" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5"/>
+            
+            <!-- Page Content Body Above -->
+            <rect x="60" y="40" width="200" height="12" rx="2" fill="#0F172A"/>
+            <rect x="60" y="60" width="480" height="6" rx="1" fill="#E2E8F0"/>
+            <rect x="60" y="72" width="420" height="6" rx="1" fill="#E2E8F0"/>
+            <rect x="60" y="84" width="380" height="6" rx="1" fill="#E2E8F0"/>
+            <text x="220" y="115" fill="#94A3B8" font-size="10" font-family="monospace">[Konten halaman terus bergulir di belakang...]</text>
+
+            <!-- Fixed Sticky Bar Container -->
+            <rect x="40" y="130" width="520" height="90" fill="#0F172A"/>
+            
+            <!-- Two Action Buttons (Grid 2 Kolom) -->
+            <rect x="60" y="142" width="230" height="44" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+            <text x="135" y="169" fill="#FFFFFF" font-size="12" font-weight="bold">📞 Hubungi Sales</text>
+
+            <rect x="310" y="142" width="230" height="44" rx="10" fill="#16A34A"/>
+            <text x="375" y="169" fill="#FFFFFF" font-size="12" font-weight="bold">💬 Chat WhatsApp</text>
+
+            <!-- Safe Area Inset Zone (Home Indicator iOS) -->
+            <rect x="40" y="194" width="520" height="26" fill="#020617"/>
+            <rect x="230" y="206" width="140" height="4" rx="2" fill="#64748B"/>
+            <text x="380" y="211" fill="#94A3B8" font-size="8" font-family="monospace">env(safe-area-inset-bottom)</text>
+
+            <!-- Callout pointer: Height 44px Fitts's Law -->
+            <path d="M545 164L580 164" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="2 2"/>
+            <text x="510" y="130" fill="#DC2626" font-size="8" font-family="monospace">min-h: 44px (Touch Target Fitts's Law)</text>
+          </svg>
+        </div>
+
+        <div class="space-y-3 text-xs text-[var(--text-muted)] leading-relaxed">
+          <strong class="block text-[var(--text-main)]">Pelajaran Teknis CSS (Safe-Area Awareness):</strong>
+          <p>
+            Di iPhone model baru (tanpa tombol Home fisik), bagian bawah layar memiliki garis gestur swipe. Jika developer hanya memakai <code class="text-blue-600 font-mono-code">bottom-0</code>, tombol WhatsApp akan tertutup oleh garis gestur tersebut dan sulit ditekan.
+          </p>
+          <div class="p-3 rounded-lg bg-[var(--bg-main)] font-mono-code text-[11px] text-emerald-600 dark:text-emerald-400">
+            padding-bottom: max(16px, env(safe-area-inset-bottom));
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. GOOGLE ADS ATTRIBUTION & SIGNAL ENGINE JOURNEY -->
+      <section class="border border-[var(--border-main)] rounded-2xl p-6 sm:p-8 bg-[var(--bg-card)]">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-red-600 text-white font-mono-code font-bold flex items-center justify-center text-sm">
+              04
+            </span>
+            <h2 class="font-serif-display text-2xl sm:text-3xl text-[var(--text-main)]">
+              Alur Konversi & Rekayasa Atribusi Iklan (Signal Engine)
+            </h2>
+          </div>
+          <span class="text-xs font-mono-code text-blue-600 dark:text-blue-400">Marketing & Analytics Engineering</span>
+        </div>
+
+        <p class="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed mb-6">
+          Bagaimana komponen antarmuka web menjembatani iklan online berbayar (Google Ads) dengan penutupan transaksi offline di dealer fisik:
+        </p>
+
+        <!-- SVG Funnel Conversion Diagram -->
+        <div class="p-6 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] mb-6">
+          <svg viewBox="0 0 700 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto max-w-2xl mx-auto font-sans">
+            <!-- Step 1: Ad Click -->
+            <rect x="10" y="30" width="115" height="70" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+            <text x="20" y="50" fill="#2563EB" font-size="8" font-weight="bold">1. GOOGLE ADS</text>
+            <text x="20" y="65" fill="#0F172A" font-size="9" font-weight="bold">Klik Iklan Truk</text>
+            <text x="20" y="80" fill="#64748B" font-size="7" font-family="monospace">?gclid=XYZ123</text>
+
+            <!-- Arrow 1 -->
+            <path d="M130 65L150 65M145 60L150 65L145 70" stroke="#0F172A" stroke-width="1.5" stroke-linecap="round"/>
+
+            <!-- Step 2: Landing Capture -->
+            <rect x="155" y="30" width="125" height="70" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5"/>
+            <text x="165" y="50" fill="#1D4ED8" font-size="8" font-weight="bold">2. LOCAL STORAGE</text>
+            <text x="165" y="65" fill="#0F172A" font-size="9" font-weight="bold">Capture Click ID</text>
+            <text x="165" y="80" fill="#64748B" font-size="7" font-family="monospace">gads_click_ctx</text>
+
+            <!-- Arrow 2 -->
+            <path d="M285 65L305 65M300 60L305 65L300 70" stroke="#0F172A" stroke-width="1.5" stroke-linecap="round"/>
+
+            <!-- Step 3: WhatsApp Click -->
+            <rect x="310" y="30" width="120" height="70" rx="8" fill="#F0FDF4" stroke="#22C55E" stroke-width="1.5"/>
+            <text x="320" y="50" fill="#15803D" font-size="8" font-weight="bold">3. WHATSAPP CTA</text>
+            <text x="320" y="65" fill="#0F172A" font-size="9" font-weight="bold">Kirim Pesan WA</text>
+            <text x="320" y="80" fill="#64748B" font-size="7" font-family="monospace">wa.me/?text=Halo</text>
+
+            <!-- Arrow 3 -->
+            <path d="M435 65L455 65M450 60L450 65L450 70" stroke="#0F172A" stroke-width="1.5" stroke-linecap="round"/>
+
+            <!-- Step 4: Deal Closure -->
+            <rect x="460" y="30" width="110" height="70" rx="8" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.5"/>
+            <text x="470" y="50" fill="#B45309" font-size="8" font-weight="bold">4. NEGOSIASI</text>
+            <text x="470" y="65" fill="#0F172A" font-size="9" font-weight="bold">Deal di Showroom</text>
+            <text x="470" y="80" fill="#64748B" font-size="7">Survei leasing & DP</text>
+
+            <!-- Arrow 4 -->
+            <path d="M575 65L595 65M590 60L595 65L590 70" stroke="#0F172A" stroke-width="1.5" stroke-linecap="round"/>
+
+            <!-- Step 5: Offline Upload -->
+            <rect x="600" y="30" width="90" height="70" rx="8" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.5"/>
+            <text x="608" y="50" fill="#B91C1C" font-size="8" font-weight="bold">5. FEEDBACK</text>
+            <text x="608" y="65" fill="#0F172A" font-size="9" font-weight="bold">Offline Upload</text>
+            <text x="608" y="80" fill="#64748B" font-size="7">Google Ads API</text>
+          </svg>
+        </div>
+
+        <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+          Inilah arsitektur menyeluruh sistem komersial modern: Komponen antarmuka (Button, Floating Badge, Sticky Bar) bukan sekadar hiasan visual, melainkan sensor pengumpul data yang menjamin investasi iklan menghasilkan laba bersih terukur.
+        </p>
+      </section>
+
+      <!-- 5. INTERACTIVE LIVE SIMULATOR PLAYGROUND (DESKTOP & MOBILE SIMULATION) -->
+      <section class="border border-[var(--border-main)] rounded-2xl p-6 sm:p-8 bg-[var(--bg-card)]">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <div>
+            <div class="flex items-center gap-3 mb-1">
+              <span class="w-8 h-8 rounded-lg bg-red-600 text-white font-mono-code font-bold flex items-center justify-center text-sm">
+                05
+              </span>
+              <h2 class="font-serif-display text-2xl sm:text-3xl text-[var(--text-main)]">
+                Simulator Interaktif: Uji Komponen Langsung
+              </h2>
+            </div>
+            <p class="text-xs sm:text-sm text-[var(--text-muted)]">
+              Klik dan coba interaksi nyata komponen Dealer Hino langsung di dalam browser Anda tanpa meninggalkan halaman ini.
+            </p>
+          </div>
+
+          <!-- Simulator Tab Switcher -->
+          <div class="inline-flex p-1 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] text-xs font-mono-code">
+            <button 
+              id="btn-tab-mobile-sim" 
+              class="px-4 py-2 rounded-lg bg-[var(--bg-card)] text-[var(--text-main)] font-semibold shadow-xs transition-all flex items-center gap-2 border border-[var(--border-main)]"
+            >
+              <span>📱 Simulasi Ponsel (Mobile)</span>
+            </button>
+            <button 
+              id="btn-tab-desktop-sim" 
+              class="px-4 py-2 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-main)] transition-all flex items-center gap-2"
+            >
+              <span>💻 Simulasi Desktop (Hero)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Simulation Display Screen -->
+        <div class="p-4 sm:p-8 rounded-2xl border border-[var(--border-main)] bg-[var(--bg-main)] flex items-center justify-center min-h-[560px]">
+          
+          <!-- TAB 1: MOBILE SMARTPHONE INTERACTIVE SIMULATOR -->
+          <div id="sim-mobile-container" class="w-full max-w-[340px] relative transition-all">
+            <!-- Simulated iPhone Outer Shell -->
+            <div class="relative w-full aspect-[9/18.5] max-h-[640px] rounded-[42px] bg-slate-950 p-3 shadow-2xl border-4 border-slate-800">
+              
+              <!-- Dynamic Island Pill -->
+              <div class="absolute top-5 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-40 flex items-center justify-between px-2">
+                <div class="w-2.5 h-2.5 rounded-full bg-slate-900 border border-slate-800"></div>
+                <div class="w-2 h-2 rounded-full bg-blue-950/80"></div>
+              </div>
+
+              <!-- Inner Phone Screen Display -->
+              <div class="relative w-full h-full rounded-[34px] bg-slate-50 dark:bg-slate-900 overflow-hidden flex flex-col font-sans select-none text-slate-900 dark:text-white">
+                
+                <!-- Status Bar -->
+                <div class="h-10 pt-2 px-6 flex items-center justify-between text-[10px] font-semibold text-slate-500 z-30">
+                  <span>09:41</span>
+                  <div class="flex items-center gap-1.5">
+                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.23C2.89 16.5 2 14.35 2 12 2 6.48 6.48 2 12 2s10 4.48 10 10c0 2.35-.89 4.5-2.35 6.23l-.62-.62C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z"/></svg>
+                    <span>5G</span>
+                    <div class="w-4 h-2 rounded-xs border border-slate-400 p-0.5"><div class="w-full h-full bg-emerald-500 rounded-2xs"></div></div>
+                  </div>
+                </div>
+
+                <!-- Simulated Mobile Header -->
+                <header class="h-12 border-b border-slate-200 dark:border-slate-800 px-4 flex items-center justify-between bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm shrink-0 z-20">
+                  <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded bg-red-600 flex items-center justify-center font-bold text-white text-xs">H</div>
+                    <span class="text-xs font-black tracking-tight">DEALER HINO</span>
+                  </div>
+                  <button 
+                    id="sim-hamburger-btn" 
+                    type="button" 
+                    class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-red-50 hover:text-red-600 transition-colors"
+                    title="Buka Menu Mobile"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                  </button>
+                </header>
+
+                <!-- Simulated Scrollable Page Content -->
+                <div class="flex-1 overflow-y-auto px-4 py-4 space-y-4 text-xs">
+                  <!-- Tagline -->
+                  <div class="inline-block px-2 py-0.5 rounded bg-red-100 dark:bg-red-950 text-red-700 dark:text-red-400 text-[10px] font-bold">
+                    Euro4 Ready 2026
+                  </div>
+
+                  <h3 class="text-sm font-black leading-tight">
+                    Truk Tangguh Bisnis Andal Jawa Timur
+                  </h3>
+
+                  <p class="text-[11px] text-slate-500 leading-relaxed">
+                    Solusi armada logistik & konstruksi dengan jaminan servis resmi HMSI.
+                  </p>
+
+                  <!-- Simulated Truck Image Card with Interactive Detail Button -->
+                  <div class="relative rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-3 shadow-xs">
+                    <div class="aspect-video bg-slate-100 dark:bg-slate-900 rounded-lg flex items-center justify-center mb-2.5">
+                      <div class="text-center">
+                        <span id="sim-truck-icon" class="text-3xl">🚛</span>
+                        <p id="sim-truck-name" class="text-[11px] font-black text-slate-800 dark:text-slate-100 mt-1">Hino 500 Series FLX</p>
+                        <span id="sim-truck-category" class="text-[9px] text-red-600 font-semibold">Medium Duty (GVW 26 Ton)</span>
+                      </div>
+                    </div>
+                    <!-- Clickable Detail Button inside phone -->
+                    <button 
+                      id="sim-btn-open-truck-detail" 
+                      type="button" 
+                      class="w-full py-2 px-3 rounded-lg bg-red-50 dark:bg-red-950/60 hover:bg-red-600 dark:hover:bg-red-600 text-red-600 dark:text-red-400 hover:text-white dark:hover:text-white text-[10px] font-bold font-mono-code transition-colors flex items-center justify-between cursor-pointer"
+                    >
+                      <span>Lihat Spesifikasi Detail Unit</span>
+                      <span>→</span>
+                    </button>
+                  </div>
+
+                  <!-- Quick Stats Grid -->
+                  <div class="grid grid-cols-2 gap-2 text-center">
+                    <div class="p-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50">
+                      <span class="text-[10px] text-slate-400 block">Penjualan</span>
+                      <span class="font-bold text-xs">1000+ Unit</span>
+                    </div>
+                    <div class="p-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50">
+                      <span class="text-[10px] text-slate-400 block">Jaminan 3S</span>
+                      <span class="font-bold text-xs text-red-600">Resmi Jatim</span>
+                    </div>
+                  </div>
+
+                  <!-- Spacer for bottom bar -->
+                  <div class="h-16"></div>
+                </div>
+
+                <!-- SIMULATED TRUCK SPEC SHEET (SLIDE-UP SHEET INSIDE PHONE) -->
+                <div 
+                  id="sim-truck-spec-sheet" 
+                  class="absolute inset-x-0 bottom-0 top-10 z-40 bg-white dark:bg-slate-900 translate-y-full transition-transform duration-300 flex flex-col p-4 border-t border-slate-200 dark:border-slate-800"
+                >
+                  <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800 mb-3">
+                    <div>
+                      <span class="text-[9px] font-mono-code font-bold uppercase text-red-600" id="sheet-truck-category">Medium Duty (6x2)</span>
+                      <h4 class="text-xs font-black text-slate-900 dark:text-white" id="sheet-truck-name">Hino 500 FLX 260 JW</h4>
+                    </div>
+                    <button id="sim-btn-close-truck-detail" class="p-1 text-slate-400 hover:text-slate-900 dark:hover:text-white text-xs cursor-pointer">✕</button>
+                  </div>
+
+                  <div class="flex-1 overflow-y-auto space-y-2 text-[10px] pr-1">
+                    <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                      <strong class="text-slate-700 dark:text-slate-300 block mb-0.5">Spesifikasi Mesin:</strong>
+                      <p class="text-slate-500 font-mono-code" id="sheet-truck-engine">J08E-WD 4-Stroke Common Rail Turbo Euro4 • 260 PS @ 2.500 RPM</p>
+                    </div>
+
+                    <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                      <strong class="text-slate-700 dark:text-slate-300 block mb-0.5">Kapasitas Muatan & GVW:</strong>
+                      <p class="text-slate-500 font-mono-code" id="sheet-truck-gvw">GVW 26.000 Kg • Konfigurasi Roda 6x2 (10 Roda)</p>
+                    </div>
+
+                    <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                      <strong class="text-slate-700 dark:text-slate-300 block mb-0.5">Aplikasi Karoseri Terbaik:</strong>
+                      <p class="text-slate-500" id="sheet-truck-karoseri">Wingbox Aluminium, Box Besi Logistik, Flat Deck, Dump Truk Pasir</p>
+                    </div>
+                  </div>
+
+                  <div class="pt-2 mt-2 border-t border-slate-200 dark:border-slate-800">
+                    <button class="sim-cta-wa w-full py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px] flex items-center justify-center gap-1 cursor-pointer">
+                      <span>💬 Minta Simulasi DP ke Mas Elgin</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- SIMULATED MOBILE OFFCANVAS DRAWER (HIDDEN BY DEFAULT) -->
+                <div 
+                  id="sim-mobile-drawer" 
+                  class="absolute inset-0 z-50 pointer-events-none transition-all duration-300"
+                >
+                  <!-- Dark Backdrop -->
+                  <div 
+                    id="sim-drawer-backdrop" 
+                    class="absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300 cursor-pointer"
+                  ></div>
+
+                  <!-- Slide-in Drawer Menu (Slides from right) -->
+                  <div 
+                    id="sim-drawer-panel" 
+                    class="absolute top-0 right-0 bottom-0 w-[80%] bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 translate-x-full transition-transform duration-300 flex flex-col p-4"
+                  >
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800 mb-3">
+                      <span class="text-xs font-black text-red-600">MENU UTAMA</span>
+                      <button id="sim-drawer-close" class="p-1 text-slate-500 hover:text-slate-900 dark:hover:text-white cursor-pointer">✕</button>
+                    </div>
+
+                    <div class="flex-1 space-y-2 text-xs overflow-y-auto">
+                      <div class="p-2 rounded bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 font-bold flex justify-between items-center">
+                        <span>Line Up Truk</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-red-200 dark:bg-red-900 text-red-800 dark:text-red-200">46 Unit</span>
+                      </div>
+                      <button class="sim-select-truck w-full text-left p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 cursor-pointer transition-colors" data-truck="dutro">
+                        Dutro 300 (Light Duty)
+                      </button>
+                      <button class="sim-select-truck w-full text-left p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 cursor-pointer transition-colors" data-truck="ranger">
+                        Ranger 500 (Medium Duty)
+                      </button>
+                      <button class="sim-select-truck w-full text-left p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 cursor-pointer transition-colors" data-truck="profia">
+                        Profia 700 (Heavy Duty)
+                      </button>
+                      <div class="p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300">Bengkel & Suku Cadang</div>
+                    </div>
+
+                    <!-- Drawer Micro Contact Card -->
+                    <div class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 mb-2">
+                      <div class="flex items-center gap-2 mb-1.5">
+                        <div class="w-7 h-7 rounded-full bg-slate-300 dark:bg-slate-700 flex items-center justify-center font-bold text-[10px]">EM</div>
+                        <div>
+                          <p class="text-[11px] font-bold leading-tight">Elgin Marchlouis</p>
+                          <p class="text-[9px] text-emerald-600 font-semibold">● Online Konsultan</p>
+                        </div>
+                      </div>
+                      <button class="sim-cta-wa w-full py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-bold flex items-center justify-center gap-1 cursor-pointer">
+                        <span>💬 Tanya via WA</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SIMULATED STICKY MOBILE BOTTOM ACTION BAR -->
+                <div class="absolute bottom-0 inset-x-0 bg-slate-900 border-t border-slate-800 p-2.5 pb-4 z-30 flex items-center gap-2">
+                  <button 
+                    class="sim-cta-call flex-1 py-2 px-3 rounded-lg bg-slate-800 text-white text-[11px] font-bold hover:bg-slate-700 transition-colors flex items-center justify-center gap-1"
+                  >
+                    <span>📞 Telepon</span>
+                  </button>
+                  <button 
+                    class="sim-cta-wa flex-1 py-2 px-3 rounded-lg bg-emerald-600 text-white text-[11px] font-bold hover:bg-emerald-500 transition-colors flex items-center justify-center gap-1"
+                  >
+                    <span>💬 WhatsApp</span>
+                  </button>
+                </div>
+
+                <!-- Home Indicator Gesture Line -->
+                <div class="absolute bottom-1 left-1/2 -translate-x-1/2 w-28 h-1 bg-slate-400 rounded-full z-40 pointer-events-none"></div>
+
+              </div>
+            </div>
+
+            <!-- Hint below phone -->
+            <p class="text-center text-[11px] font-mono-code text-[var(--text-muted)] mt-4">
+              💡 Coba klik <strong class="text-red-500">Ikon Menu ☰</strong> atau tombol <strong class="text-emerald-500">WhatsApp</strong> di dalam ponsel di atas!
+            </p>
+          </div>
+
+          <!-- TAB 2: DESKTOP HERO INTERACTIVE SIMULATOR (HIDDEN INITIALLY) -->
+          <div id="sim-desktop-container" class="w-full max-w-2xl hidden transition-all">
+            <!-- Simulated Browser Frame -->
+            <div class="rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)] shadow-xl overflow-hidden">
+              <!-- Browser Titlebar -->
+              <div class="px-4 py-2.5 border-b border-[var(--border-main)] bg-slate-100 dark:bg-slate-800/60 flex items-center gap-2">
+                <div class="flex items-center gap-1.5">
+                  <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+                  <div class="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
+                  <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+                </div>
+                <div class="flex-1 mx-4 px-3 py-1 rounded-md bg-white dark:bg-slate-900 border border-[var(--border-main)] text-[10px] font-mono-code text-slate-500 flex items-center justify-between">
+                  <span>https://dealerhinoofficial.com</span>
+                  <span class="text-emerald-500">🔒 SSL 256-bit</span>
+                </div>
+              </div>
+
+              <!-- Desktop Hero Canvas Simulation -->
+              <div class="p-6 sm:p-8 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-950">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                  
+                  <!-- Left Text Column -->
+                  <div class="space-y-4">
+                    <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono-code bg-red-100 dark:bg-red-950 text-red-700 dark:text-red-300 font-bold">
+                      Dealer Resmi Hino Motors Jatim
+                    </span>
+                    <h3 class="text-2xl font-black text-slate-900 dark:text-white leading-tight">
+                      Armada Bisnis Terbaik dengan Standar Euro4
+                    </h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                      Layanan konsultasi spesifikasi karoseri, paket simulasi leasing DP fleksibel, dan jaminan suku cadang resmi.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                      <button class="sim-cta-wa px-4 py-2 rounded-lg bg-red-600 text-white text-xs font-bold hover:bg-red-700 shadow-sm transition-colors">
+                        Lihat Line Up Unit ↓
+                      </button>
+                      <button class="sim-cta-call px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-bold hover:bg-slate-50 transition-colors">
+                        Minta Brosur SPK
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Right Visual with Interactive Floating Trust Badge -->
+                  <div class="relative rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-200 dark:bg-slate-800/60 aspect-[4/3] flex items-center justify-center p-4">
+                    <div class="text-center">
+                      <span class="text-4xl">🚚</span>
+                      <p class="text-xs font-bold text-slate-700 dark:text-slate-300 mt-2">HINO 500 SERIES</p>
+                      <span class="text-[10px] text-slate-400">Medium Duty Truck</span>
+                    </div>
+
+                    <!-- The Floating Trust Card (Interactive) -->
+                    <div 
+                      id="sim-desktop-trust-card" 
+                      class="absolute bottom-3 left-3 right-3 sm:right-auto sm:max-w-[280px] p-3 rounded-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-l-4 border-red-600 shadow-lg cursor-pointer hover:scale-105 transition-transform"
+                      title="Klik untuk melihat efek interaktif"
+                    >
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-slate-200 dark:bg-slate-800 flex items-center justify-center font-bold text-sm text-slate-700 dark:text-slate-300 shrink-0">
+                          EM
+                        </div>
+                        <div class="min-w-0">
+                          <div class="flex items-center gap-1.5">
+                            <p class="text-xs font-black text-slate-900 dark:text-white truncate">Elgin Marchlouis</p>
+                            <span class="px-1 py-0.2 rounded bg-red-600 text-[8px] font-bold text-white">RESMI</span>
+                          </div>
+                          <div class="flex items-center gap-1.5 mt-0.5">
+                            <span class="relative flex h-2 w-2">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                            <span class="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">Fast Respon WA</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Hint below desktop -->
+            <p class="text-center text-[11px] font-mono-code text-[var(--text-muted)] mt-4">
+              💡 Arahkan kursor atau klik pada <strong class="text-red-500">Kartu Elgin Marchlouis</strong> di atas untuk melihat efek hover dan visual feedback.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Interactive Telemetry Toast (Appears when any simulated CTA is clicked) -->
+        <div id="sim-telemetry-toast" class="hidden mt-4 p-4 rounded-xl border border-emerald-500/40 bg-emerald-50 dark:bg-emerald-950/40 transition-all">
+          <div class="flex items-start gap-3">
+            <span class="text-lg">🎯</span>
+            <div class="text-xs space-y-1">
+              <strong class="text-emerald-800 dark:text-emerald-300 block font-mono-code">
+                [SIMULASI LEAD CAPTURE BERHASIL] Parameter Atribusi Terdeteksi:
+              </strong>
+              <p class="text-emerald-700 dark:text-emerald-400 font-mono-code text-[11px] break-all">
+                Payload WhatsApp: <code class="bg-white/60 dark:bg-slate-900/60 px-1 py-0.5 rounded">wa.me/6281234567890?text=Halo%20Mas%20Elgin,%20saya%20tertarik%20truk%20Hino%20dari%20website...&gclid=simulated_gads_click_id_9921</code>
+              </p>
+              <p class="text-[11px] text-[var(--text-muted)]">
+                Pada situs nyata, klik ini langsung membuka aplikasi WhatsApp pengguna dan merekam event conversion ke Google Tag Manager / Meta Pixel.
+              </p>
+            </div>
+            <button id="sim-close-toast" class="ml-auto text-emerald-800 dark:text-emerald-300 font-bold text-xs p-1">✕</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. THE THUMB ZONE ERGONOMICS (FITTS'S LAW) -->
+      <section class="border border-[var(--border-main)] rounded-2xl p-6 sm:p-8 bg-[var(--bg-card)]">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-red-600 text-white font-mono-code font-bold flex items-center justify-center text-sm">
+              06
+            </span>
+            <h2 class="font-serif-display text-2xl sm:text-3xl text-[var(--text-main)]">
+              Ergonomi Layar: "The Thumb Zone" & Fitts's Law
+            </h2>
+          </div>
+          <span class="text-xs font-mono-code text-amber-600 dark:text-amber-400">Mobile UX Research</span>
+        </div>
+
+        <p class="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed mb-6">
+          Berdasarkan riset Steven Hoober terhadap ribuan pengguna ponsel cerdas, <strong>49% orang mengoperasikan smartphone dengan satu tangan</strong>. Desain antarmuka Dealer Hino secara cermat memetakan zonasi jangkauan jempol:
+        </p>
+
+        <!-- SVG Thumb Zone Diagram -->
+        <div class="p-6 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] mb-6">
+          <svg viewBox="0 0 650 320" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto max-w-xl mx-auto font-sans">
+            <!-- Mobile Shell -->
+            <rect x="50" y="20" width="220" height="280" rx="20" fill="#FFFFFF" stroke="#0F172A" stroke-width="2"/>
+            
+            <!-- Red / Hard to Reach Zone (Top) -->
+            <path d="M50 40C50 28.9543 58.9543 20 70 20H250C261.046 20 270 28.9543 270 40V110C240 100 80 100 50 110V40Z" fill="#FEE2E2" fill-opacity="0.8"/>
+            <text x="110" y="65" fill="#DC2626" font-size="9" font-weight="bold">ZONA SULIT (HARD)</text>
+            <text x="80" y="80" fill="#991B1B" font-size="7">Memerlukan regangan jari penuh</text>
+
+            <!-- Yellow / Natural Reach (Middle) -->
+            <path d="M50 110C80 100 240 100 270 110V200C230 180 90 180 50 200V110Z" fill="#FEF3C7" fill-opacity="0.8"/>
+            <text x="105" y="150" fill="#D97706" font-size="9" font-weight="bold">ZONA SEDANG (OK)</text>
+            <text x="80" y="165" fill="#92400E" font-size="7">Area membaca & scroll konten</text>
+
+            <!-- Green / Natural Thumb Zone (Bottom) -->
+            <path d="M50 200C90 180 230 180 270 200V280C270 291.046 261.046 300 250 300H70C58.9543 300 50 291.046 50 280V200Z" fill="#DCFCE7" fill-opacity="0.9"/>
+            <text x="95" y="240" fill="#16A34A" font-size="10" font-weight="bold">ZONA ALAMI JEMPOL</text>
+            <text x="75" y="255" fill="#15803D" font-size="7">Jangkauan 100% tanpa geser tangan</text>
+            <rect x="70" y="268" width="180" height="22" rx="6" fill="#16A34A"/>
+            <text x="105" y="282" fill="#FFFFFF" font-size="8" font-weight="bold">Sticky Action Bar WhatsApp</text>
+
+            <!-- Explanatory Legend / Callouts on Right -->
+            <g transform="translate(310, 30)">
+              <!-- Legend Item 1 -->
+              <rect x="0" y="10" width="14" height="14" rx="3" fill="#DC2626"/>
+              <text x="24" y="22" fill="#0F172A" font-size="11" font-weight="bold">Pojok Atas: Zona Sulit</text>
+              <text x="24" y="38" fill="#64748B" font-size="9">Cocok untuk: Logo, Back button, hamburger (tindakan non-kritis).</text>
+
+              <!-- Legend Item 2 -->
+              <rect x="0" y="70" width="14" height="14" rx="3" fill="#D97706"/>
+              <text x="24" y="82" fill="#0F172A" font-size="11" font-weight="bold">Area Tengah: Zona Pasif</text>
+              <text x="24" y="98" fill="#64748B" font-size="9">Cocok untuk: Foto armada truk, kartu spesifikasi, dan ulasan dealer.</text>
+
+              <!-- Legend Item 3 -->
+              <rect x="0" y="130" width="14" height="14" rx="3" fill="#16A34A"/>
+              <text x="24" y="142" fill="#0F172A" font-size="11" font-weight="bold">Area Bawah: Titik Konversi Tertinggi</text>
+              <text x="24" y="158" fill="#64748B" font-size="9">Alasan mengapa Sticky Bottom Bar menghasilkan konversi 35% lebih tinggi dibanding menaruh tombol hanya di header.</text>
+
+              <!-- Stat Box -->
+              <rect x="0" y="195" width="280" height="50" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+              <text x="14" y="215" fill="#0F172A" font-size="10" font-weight="bold">Fitts's Law Rule of Thumb:</text>
+              <text x="14" y="232" fill="#64748B" font-size="9">Waktu mencapai target = jarak tempuh jempol + ukuran tombol.</text>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 7. MENTAL MODEL COMPARISON MATRIX: B2C VS B2B COMMERCIAL AUTOMOTIVE -->
+      <section class="border border-[var(--border-main)] rounded-2xl p-6 sm:p-8 bg-[var(--bg-card)]">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-8 h-8 rounded-lg bg-red-600 text-white font-mono-code font-bold flex items-center justify-center text-sm">
+            07
+          </span>
+          <div>
+            <h2 class="font-serif-display text-2xl sm:text-3xl text-[var(--text-main)]">
+              Matriks Model Mental UX: E-Commerce B2C vs B2B Truk Komersial
+            </h2>
+            <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1">
+              Mengapa merancang situs web dealer truk Hino memiliki aturan main yang berbeda total dibanding Tokopedia atau Shopee:
+            </p>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border border-[var(--border-main)] rounded-xl overflow-hidden">
+            <thead class="bg-[var(--bg-main)] text-[var(--text-main)] font-mono-code uppercase text-[11px] border-b border-[var(--border-main)]">
+              <tr>
+                <th class="p-3.5">Dimensi UX</th>
+                <th class="p-3.5 text-slate-500">Toko Online Biasa (B2C)</th>
+                <th class="p-3.5 text-red-600 dark:text-red-400 bg-red-500/5 font-bold">Dealer Truk Niaga (Dealer Hino B2B)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[var(--border-main)] text-[var(--text-muted)]">
+              <tr class="hover:bg-[var(--bg-main)]/50 transition-colors">
+                <td class="p-3.5 font-bold text-[var(--text-main)] font-mono-code">Mekanisme Transaksi</td>
+                <td class="p-3.5">Self-service, klik "Beli Sekarang", isi alamat, bayar via payment gateway seketika.</td>
+                <td class="p-3.5 text-[var(--text-main)] bg-red-500/5 font-semibold">Konsultatif: Diskusi WhatsApp, survei leasing, penerbitan PO (Purchase Order) dan SPK resmi.</td>
+              </tr>
+              <tr class="hover:bg-[var(--bg-main)]/50 transition-colors">
+                <td class="p-3.5 font-bold text-[var(--text-main)] font-mono-code">Komponen Keranjang (Cart)</td>
+                <td class="p-3.5">Wajib ada icon Cart di header dengan badge jumlah barang.</td>
+                <td class="p-3.5 text-[var(--text-main)] bg-red-500/5 font-semibold">TIDAK ADA. Pembelian unit truk ratusan juta tidak pernah melalui keranjang checkout web.</td>
+              </tr>
+              <tr class="hover:bg-[var(--bg-main)]/50 transition-colors">
+                <td class="p-3.5 font-bold text-[var(--text-main)] font-mono-code">Struktur Harga (Price)</td>
+                <td class="p-3.5">Harga mutlak pasti (Fixed Price, misal: Rp 150.000).</td>
+                <td class="p-3.5 text-[var(--text-main)] bg-red-500/5 font-semibold">Harga Chasis OTR tentatif, belum termasuk variasi karoseri (Dump, Box, Wingbox, Tangki BBM).</td>
+              </tr>
+              <tr class="hover:bg-[var(--bg-main)]/50 transition-colors">
+                <td class="p-3.5 font-bold text-[var(--text-main)] font-mono-code">Trust Anchor Utama</td>
+                <td class="p-3.5">Review bintang 5 dan foto kiriman pembeli anonim.</td>
+                <td class="p-3.5 text-[var(--text-main)] bg-red-500/5 font-semibold">Profil sales resmi berwajah asli (Elgin), sertifikasi dealer 3S, dan alamat showroom fisik jelas.</td>
+              </tr>
+              <tr class="hover:bg-[var(--bg-main)]/50 transition-colors">
+                <td class="p-3.5 font-bold text-[var(--text-main)] font-mono-code">Primary CTA</td>
+                <td class="p-3.5">"Checkout Sekarang" atau "Tambah ke Keranjang".</td>
+                <td class="p-3.5 text-[var(--text-main)] bg-red-500/5 font-semibold">"Hubungi Sales Resmi via WhatsApp" atau "Hitung Simulasi Kredit DP".</td>
+              </tr>
+              <tr class="hover:bg-[var(--bg-main)]/50 transition-colors">
+                <td class="p-3.5 font-bold text-[var(--text-main)] font-mono-code">Siklus Pengambilan Keputusan</td>
+                <td class="p-3.5">Impulsif (1 hingga 5 menit).</td>
+                <td class="p-3.5 text-[var(--text-main)] bg-red-500/5 font-semibold">Panjang (1 minggu hingga 2 bulan), melibatkan tim finance, logistik, dan legal perusahaan.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 8. PRODUCTION AI PROMPT STUDIO (READY TO COPY) -->
+      <section class="border border-[var(--border-main)] rounded-2xl p-6 sm:p-8 bg-[var(--bg-card)]">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-8 h-8 rounded-lg bg-red-600 text-white font-mono-code font-bold flex items-center justify-center text-sm">
+            08
+          </span>
+          <div>
+            <h2 class="font-serif-display text-2xl sm:text-3xl text-[var(--text-main)]">
+              Prompt AI Studio: Hasilkan Komponen Serupa dalam 1-Klik
+            </h2>
+            <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1">
+              Gunakan prompt teruji ini di Claude, v0, Bolt, atau ChatGPT untuk mereplikasi arsitektur antarmuka B2B komersial berkualitas tinggi:
+            </p>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Prompt 1: Hero Section + Floating Trust Card -->
+          <div class="p-5 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)]">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono-code font-bold text-red-600 dark:text-red-400">
+                PROMPT 1: Hero Section B2B Otomotif dengan Floating Trust Badge
+              </span>
+              <button 
+                class="copy-prompt-btn px-3 py-1.5 rounded-lg border border-[var(--border-main)] bg-[var(--bg-card)] hover:border-red-500 text-xs font-mono-code text-[var(--text-main)] transition-colors flex items-center gap-1.5"
+                data-prompt-target="prompt-text-1"
+              >
+                <span>Salin Prompt</span>
+              </button>
+            </div>
+            <pre id="prompt-text-1" class="text-[11px] font-mono-code text-[var(--text-muted)] p-3 rounded-lg bg-[var(--bg-card)] border border-[var(--border-main)] whitespace-pre-wrap leading-relaxed select-all">Build a modern, high-converting B2B commercial vehicle hero section for an authorized truck dealership (Astro/React with Tailwind CSS).
+Requirements:
+1. Two-column desktop grid (55% left content, 45% right image showcase) that gracefully stacks on mobile.
+2. Left column: Euro4 badge pill, high-impact headline ("Armada Truk Tangguh untuk Bisnis Skala Besar"), dual CTA buttons (Primary: Red "Lihat Line Up Unit", Secondary: Outline "Konsultasi Spesifikasi Karoseri").
+3. Right column: Responsive truck visual container with a floating glassmorphic Trust Badge in the bottom-left corner.
+4. Trust Badge anatomy: 4px primary-colored left border accent, consultant avatar photo, consultant name ("Elgin Marchlouis"), official certified sales badge, and an animated green pulsing dot indicating "Online - Fast Response".
+5. Mobile optimization: On mobile viewport, hide the floating badge from the image and dock primary CTAs to the bottom.</pre>
+          </div>
+
+          <!-- Prompt 2: Mobile Sticky Bottom Action Bar with Safe Area -->
+          <div class="p-5 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)]">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono-code font-bold text-emerald-600 dark:text-emerald-400">
+                PROMPT 2: Sticky Mobile Bottom Action Bar (Safe-Area Aware & Fitts's Law)
+              </span>
+              <button 
+                class="copy-prompt-btn px-3 py-1.5 rounded-lg border border-[var(--border-main)] bg-[var(--bg-card)] hover:border-emerald-500 text-xs font-mono-code text-[var(--text-main)] transition-colors flex items-center gap-1.5"
+                data-prompt-target="prompt-text-2"
+              >
+                <span>Salin Prompt</span>
+              </button>
+            </div>
+            <pre id="prompt-text-2" class="text-[11px] font-mono-code text-[var(--text-muted)] p-3 rounded-lg bg-[var(--bg-card)] border border-[var(--border-main)] whitespace-pre-wrap leading-relaxed select-all">Create a production-ready Sticky Mobile Bottom Action Bar for a commercial website using Tailwind CSS and native CSS.
+Requirements:
+1. Visibility: Only visible on mobile/tablet viewports (hidden on desktop md:hidden).
+2. Layout: Fixed position at the bottom of viewport with z-index 50, containing 2 action buttons in a grid (Call Sales & Chat WhatsApp).
+3. Ergonomics & Accessibility: Minimum button touch-target height of 44px (Fitts's Law compliant) with bold icons and text.
+4. iOS Safe-Area Awareness: Use `padding-bottom: max(16px, env(safe-area-inset-bottom))` so that the action bar never collides with the iPhone home indicator gesture bar.
+5. Telemetry / Attribution preservation: The WhatsApp button must preserve Google Ads click IDs (?gclid=) from localStorage in the outbound wa.me prefilled message link.</pre>
+          </div>
+
+          <!-- Prompt 3: Mobile Navigation Drawer with Sales Micro-Card -->
+          <div class="p-5 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)]">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono-code font-bold text-blue-600 dark:text-blue-400">
+                PROMPT 3: Offcanvas Mobile Drawer dengan Quick-Contact Card
+              </span>
+              <button 
+                class="copy-prompt-btn px-3 py-1.5 rounded-lg border border-[var(--border-main)] bg-[var(--bg-card)] hover:border-blue-500 text-xs font-mono-code text-[var(--text-main)] transition-colors flex items-center gap-1.5"
+                data-prompt-target="prompt-text-3"
+              >
+                <span>Salin Prompt</span>
+              </button>
+            </div>
+            <pre id="prompt-text-3" class="text-[11px] font-mono-code text-[var(--text-muted)] p-3 rounded-lg bg-[var(--bg-card)] border border-[var(--border-main)] whitespace-pre-wrap leading-relaxed select-all">Build an offcanvas mobile navigation drawer for a high-value B2B automotive website.
+Requirements:
+1. Slide-over panel transitioning from right to left (width 85vw, max-w-sm) with a darkened backdrop (bg-black/60) and body scroll lock when open.
+2. Grouped information architecture: Top category for "Armada & Line Up" with total unit count pill badge, secondary category for "Layanan 3S & Garansi".
+3. Bottom-anchored Sales Micro-Card: A sticky card at the bottom of the drawer featuring the certified sales consultant's name, photo, and direct one-tap Call and WhatsApp buttons.
+4. Smooth keyboard navigation: Pressing ESC closes the drawer, and focus traps within the modal when open.</pre>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Navigation Back to All Components -->
+    <div class="pt-8 border-t border-[var(--border-main)] flex items-center justify-between">
+      <a href="/" class="text-xs font-mono-code text-[var(--text-muted)] hover:text-[var(--text-main)] flex items-center gap-1.5 transition-colors">
+        <span>← Kembali ke Semua Komponen</span>
+      </a>
+      <a href="/panduan-belajar" class="text-xs font-mono-code text-blue-600 dark:text-blue-400 font-bold hover:underline flex items-center gap-1.5">
+        <span>Lihat Peta Belajar & Decision Tree →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- CLIENT-SIDE SIMULATOR CONTROLLER SCRIPT -->
+  <script>
+    // Tab switching between Mobile and Desktop Simulator
+    const btnTabMobile = document.getElementById('btn-tab-mobile-sim');
+    const btnTabDesktop = document.getElementById('btn-tab-desktop-sim');
+    const mobileContainer = document.getElementById('sim-mobile-container');
+    const desktopContainer = document.getElementById('sim-desktop-container');
+
+    if (btnTabMobile && btnTabDesktop && mobileContainer && desktopContainer) {
+      btnTabMobile.addEventListener('click', () => {
+        btnTabMobile.classList.add('bg-[var(--bg-card)]', 'text-[var(--text-main)]', 'font-semibold', 'shadow-xs', 'border', 'border-[var(--border-main)]');
+        btnTabMobile.classList.remove('text-[var(--text-muted)]');
+        btnTabDesktop.classList.remove('bg-[var(--bg-card)]', 'text-[var(--text-main)]', 'font-semibold', 'shadow-xs', 'border', 'border-[var(--border-main)]');
+        btnTabDesktop.classList.add('text-[var(--text-muted)]');
+        
+        mobileContainer.classList.remove('hidden');
+        desktopContainer.classList.add('hidden');
+      });
+
+      btnTabDesktop.addEventListener('click', () => {
+        btnTabDesktop.classList.add('bg-[var(--bg-card)]', 'text-[var(--text-main)]', 'font-semibold', 'shadow-xs', 'border', 'border-[var(--border-main)]');
+        btnTabDesktop.classList.remove('text-[var(--text-muted)]');
+        btnTabMobile.classList.remove('bg-[var(--bg-card)]', 'text-[var(--text-main)]', 'font-semibold', 'shadow-xs', 'border', 'border-[var(--border-main)]');
+        btnTabMobile.classList.add('text-[var(--text-muted)]');
+        
+        desktopContainer.classList.remove('hidden');
+        mobileContainer.classList.add('hidden');
+      });
+    }
+
+    // Simulated Mobile Drawer Controller
+    const simHamburgerBtn = document.getElementById('sim-hamburger-btn');
+    const simDrawer = document.getElementById('sim-mobile-drawer');
+    const simBackdrop = document.getElementById('sim-drawer-backdrop');
+    const simPanel = document.getElementById('sim-drawer-panel');
+    const simClose = document.getElementById('sim-drawer-close');
+
+    function openSimDrawer() {
+      if (!simDrawer || !simBackdrop || !simPanel) return;
+      simDrawer.classList.remove('pointer-events-none');
+      simDrawer.classList.add('pointer-events-auto');
+      simBackdrop.classList.remove('opacity-0');
+      simBackdrop.classList.add('opacity-100');
+      simPanel.classList.remove('translate-x-full');
+      simPanel.classList.add('translate-x-0');
+    }
+
+    function closeSimDrawer() {
+      if (!simDrawer || !simBackdrop || !simPanel) return;
+      simBackdrop.classList.remove('opacity-100');
+      simBackdrop.classList.add('opacity-0');
+      simPanel.classList.remove('translate-x-0');
+      simPanel.classList.add('translate-x-full');
+      setTimeout(() => {
+        simDrawer.classList.remove('pointer-events-auto');
+        simDrawer.classList.add('pointer-events-none');
+      }, 300);
+    }
+
+    if (simHamburgerBtn) simHamburgerBtn.addEventListener('click', openSimDrawer);
+    if (simClose) simClose.addEventListener('click', closeSimDrawer);
+    if (simBackdrop) simBackdrop.addEventListener('click', closeSimDrawer);
+
+    // Simulated Truck Spec Sheet Bottom Sheet
+    const btnOpenTruckDetail = document.getElementById('sim-btn-open-truck-detail');
+    const btnCloseTruckDetail = document.getElementById('sim-btn-close-truck-detail');
+    const truckSpecSheet = document.getElementById('sim-truck-spec-sheet');
+
+    function openTruckDetail() {
+      truckSpecSheet?.classList.remove('translate-y-full');
+      truckSpecSheet?.classList.add('translate-y-0');
+    }
+
+    function closeTruckDetail() {
+      truckSpecSheet?.classList.remove('translate-y-0');
+      truckSpecSheet?.classList.add('translate-y-full');
+    }
+
+    btnOpenTruckDetail?.addEventListener('click', openTruckDetail);
+    btnCloseTruckDetail?.addEventListener('click', closeTruckDetail);
+
+    // Truck data dictionary for selection in simulated drawer
+    const truckCatalog: Record<string, { name: string; category: string; icon: string; engine: string; gvw: string; karoseri: string }> = {
+      dutro: {
+        name: 'Hino 300 Dutro 136 HD',
+        category: 'Light Duty (4 Roda / 6 Roda)',
+        icon: '🚚',
+        engine: 'N04C-WV Euro4 Common Rail • 136 PS @ 2.500 RPM',
+        gvw: 'GVW 8.250 Kg (8.25 Ton)',
+        karoseri: 'Box Besi, Bak Terbuka Kayu, Dump Truk Mini, Food Truck'
+      },
+      ranger: {
+        name: 'Hino 500 Ranger FLX 260 JW',
+        category: 'Medium Duty (6x2 - 10 Roda)',
+        icon: '🚛',
+        engine: 'J08E-WD Euro4 Common Rail Turbo • 260 PS @ 2.500 RPM',
+        gvw: 'GVW 26.000 Kg (26 Ton)',
+        karoseri: 'Wingbox Aluminium, Tangki BBM/CPO, Box Freezer, Dump Truk'
+      },
+      profia: {
+        name: 'Hino 700 Profia Tractor Head',
+        category: 'Heavy Duty (Tractor Head 6x4)',
+        icon: '🚜',
+        engine: 'E13C-BK Euro4 Common Rail • 410 PS @ 1.800 RPM',
+        gvw: 'GCW 55.000 Kg (55 Ton)',
+        karoseri: 'Trailer Kontainer 40ft, Tangki High-Capacity, Lowbed Alat Berat'
+      }
+    };
+
+    const selectTruckButtons = document.querySelectorAll('.sim-select-truck');
+    const simTruckIcon = document.getElementById('sim-truck-icon');
+    const simTruckName = document.getElementById('sim-truck-name');
+    const simTruckCategory = document.getElementById('sim-truck-category');
+    const sheetTruckCategory = document.getElementById('sheet-truck-category');
+    const sheetTruckName = document.getElementById('sheet-truck-name');
+    const sheetTruckEngine = document.getElementById('sheet-truck-engine');
+    const sheetTruckGvw = document.getElementById('sheet-truck-gvw');
+    const sheetTruckKaroseri = document.getElementById('sheet-truck-karoseri');
+
+    selectTruckButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const truckKey = btn.getAttribute('data-truck');
+        if (!truckKey || !truckCatalog[truckKey]) return;
+        const item = truckCatalog[truckKey];
+
+        if (simTruckIcon) simTruckIcon.textContent = item.icon;
+        if (simTruckName) simTruckName.textContent = item.name;
+        if (simTruckCategory) simTruckCategory.textContent = item.category;
+
+        if (sheetTruckCategory) sheetTruckCategory.textContent = item.category;
+        if (sheetTruckName) sheetTruckName.textContent = item.name;
+        if (sheetTruckEngine) sheetTruckEngine.textContent = item.engine;
+        if (sheetTruckGvw) sheetTruckGvw.textContent = item.gvw;
+        if (sheetTruckKaroseri) sheetTruckKaroseri.textContent = item.karoseri;
+
+        closeSimDrawer();
+      });
+    });
+
+    // Simulated CTA Lead Capture Toast Trigger
+    const telemetryToast = document.getElementById('sim-telemetry-toast');
+    const closeToastBtn = document.getElementById('sim-close-toast');
+    const allCtaButtons = document.querySelectorAll('.sim-cta-wa, .sim-cta-call, #sim-desktop-trust-card');
+
+    allCtaButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (telemetryToast) {
+          telemetryToast.classList.remove('hidden');
+          telemetryToast.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    });
+
+    if (closeToastBtn && telemetryToast) {
+      closeToastBtn.addEventListener('click', () => {
+        telemetryToast.classList.add('hidden');
+      });
+    }
+
+    // Copy Prompt Buttons with Feedback
+    const copyPromptButtons = document.querySelectorAll('.copy-prompt-btn');
+    copyPromptButtons.forEach(button => {
+      button.addEventListener('click', async () => {
+        const targetId = button.getAttribute('data-prompt-target');
+        if (!targetId) return;
+        const textElement = document.getElementById(targetId);
+        if (!textElement) return;
+
+        try {
+          await navigator.clipboard.writeText(textElement.textContent || '');
+          const originalText = button.innerHTML;
+          button.innerHTML = '<span>✓ Tersalin!</span>';
+          button.classList.add('bg-green-100', 'text-green-800', 'border-green-400');
+          setTimeout(() => {
+            button.innerHTML = originalText;
+            button.classList.remove('bg-green-100', 'text-green-800', 'border-green-400');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy text', err);
+        }
+      });
+    });
+  </script>
+</Layout>

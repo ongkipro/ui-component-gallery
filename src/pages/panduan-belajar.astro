@@ -1,0 +1,232 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Peta Belajar Komponen UI/UX — Panduan Komprehensif"
+  description="Roadmap dan decision tree untuk memahami hirarki komponen antarmuka web dari level dasar hingga kompleks."
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Header -->
+    <div class="border-b border-[var(--border-main)] pb-8 mb-12">
+      <span class="text-xs font-mono-code uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold block mb-2">
+        ROADMAP PEMBELAJARAN
+      </span>
+      <h1 class="font-serif-display text-4xl sm:text-5xl text-[var(--text-main)] font-normal mb-4">
+        Peta Belajar Komponen UI/UX
+      </h1>
+      <p class="text-base text-[var(--text-muted)] leading-relaxed max-w-2xl">
+        Belajar komponen antarmuka web tidak harus acak. Mulailah dari komponen dasar (*atoms*), pahami bagaimana mereka disusun menjadi wadah (*molecules/organisms*), dan pelajari pohon keputusan (*decision tree*) untuk memilih komponen yang tepat.
+      </p>
+    </div>
+
+    <!-- 4 Level Roadmap -->
+    <div class="space-y-12 mb-16">
+      <!-- Level 1 -->
+      <div class="border border-[var(--border-main)] rounded-2xl p-6 sm:p-8 bg-[var(--bg-card)]">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-8 h-8 rounded-lg bg-blue-600 text-white font-mono-code font-bold flex items-center justify-center text-sm">
+            01
+          </span>
+          <div>
+            <h2 class="font-serif-display text-2xl text-[var(--text-main)]">Level 1: Elemen Fundamental (Atoms)</h2>
+            <p class="text-xs font-mono-code text-[var(--text-muted)]">Fokus: Interaktivitas dasar, status biner, dan mikro-metadata.</p>
+          </div>
+        </div>
+        <p class="text-sm text-[var(--text-muted)] leading-relaxed mb-6">
+          Ini adalah fondasi setiap aplikasi web. Jika Anda belum menguasai state (hover, active, focus-visible, disabled) pada komponen dasar ini, membangun halaman kompleks akan rentan bug aksesibilitas.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+          <a href="/komponen/button" class="p-3 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] hover:border-blue-500 transition-colors">
+            <span class="font-bold text-sm block text-[var(--text-main)]">Button</span>
+            <span class="text-xs text-[var(--text-muted)]">Pemicu aksi primer & sekunder</span>
+          </a>
+          <a href="/komponen/checkbox" class="p-3 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] hover:border-blue-500 transition-colors">
+            <span class="font-bold text-sm block text-[var(--text-main)]">Checkbox & Radio</span>
+            <span class="text-xs text-[var(--text-muted)]">Pilihan jamak vs tunggal</span>
+          </a>
+          <a href="/komponen/toggle-switch" class="p-3 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] hover:border-blue-500 transition-colors">
+            <span class="font-bold text-sm block text-[var(--text-main)]">Toggle Switch</span>
+            <span class="text-xs text-[var(--text-muted)]">Kondisi On/Off instan</span>
+          </a>
+          <a href="/komponen/badge" class="p-3 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] hover:border-blue-500 transition-colors">
+            <span class="font-bold text-sm block text-[var(--text-main)]">Badge / Tag</span>
+            <span class="text-xs text-[var(--text-muted)]">Penanda status warna semantik</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Level 2 -->
+      <div class="border border-[var(--border-main)] rounded-2xl p-6 sm:p-8 bg-[var(--bg-card)]">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-8 h-8 rounded-lg bg-indigo-600 text-white font-mono-code font-bold flex items-center justify-center text-sm">
+            02
+          </span>
+          <div>
+            <h2 class="font-serif-display text-2xl text-[var(--text-main)]">Level 2: Wadah & Pengatur Konten (Molecules)</h2>
+            <p class="text-xs font-mono-code text-[var(--text-muted)]">Fokus: Tata letak, pengelompokan informasi, dan progressive disclosure.</p>
+          </div>
+        </div>
+        <p class="text-sm text-[var(--text-muted)] leading-relaxed mb-6">
+          Komponen ini membungkus elemen-elemen atomik menjadi satu kesatuan informasi yang rapi, mencegah layar penuh sesak dengan teks.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+          <a href="/komponen/card" class="p-3 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] hover:border-blue-500 transition-colors">
+            <span class="font-bold text-sm block text-[var(--text-main)]">Card</span>
+            <span class="text-xs text-[var(--text-muted)]">Wadah entitas tunggal</span>
+          </a>
+          <a href="/komponen/accordion" class="p-3 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] hover:border-blue-500 transition-colors">
+            <span class="font-bold text-sm block text-[var(--text-main)]">Accordion</span>
+            <span class="text-xs text-[var(--text-muted)]">Lipatan vertikal hemat ruang</span>
+          </a>
+          <a href="/komponen/tabs" class="p-3 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] hover:border-blue-500 transition-colors">
+            <span class="font-bold text-sm block text-[var(--text-main)]">Tabs</span>
+            <span class="text-xs text-[var(--text-muted)]">Navigasi panel horizontal</span>
+          </a>
+          <a href="/komponen/breadcrumbs" class="p-3 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] hover:border-blue-500 transition-colors">
+            <span class="font-bold text-sm block text-[var(--text-main)]">Breadcrumbs</span>
+            <span class="text-xs text-[var(--text-muted)]">Jejak hirarki website</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Level 3 -->
+      <div class="border border-[var(--border-main)] rounded-2xl p-6 sm:p-8 bg-[var(--bg-card)]">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-8 h-8 rounded-lg bg-emerald-600 text-white font-mono-code font-bold flex items-center justify-center text-sm">
+            03
+          </span>
+          <div>
+            <h2 class="font-serif-display text-2xl text-[var(--text-main)]">Level 3: Lapisan Overlay & Umpan Balik (Feedback)</h2>
+            <p class="text-xs font-mono-code text-[var(--text-muted)]">Fokus: Focus trap, z-index, blocking vs non-blocking interaction.</p>
+          </div>
+        </div>
+        <p class="text-sm text-[var(--text-muted)] leading-relaxed mb-6">
+          Komponen yang muncul di atas aliran dokumen biasa. Sangat penting memahami kapan harus memblokir interaksi (Modal) dan kapan cukup memberi tahu secara pasif (Toast).
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+          <a href="/komponen/modal" class="p-3 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] hover:border-blue-500 transition-colors">
+            <span class="font-bold text-sm block text-[var(--text-main)]">Modal Dialog</span>
+            <span class="text-xs text-[var(--text-muted)]">Fokus penuh / konfirmasi kritis</span>
+          </a>
+          <a href="/komponen/drawer" class="p-3 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] hover:border-blue-500 transition-colors">
+            <span class="font-bold text-sm block text-[var(--text-main)]">Drawer / Sheet</span>
+            <span class="text-xs text-[var(--text-muted)]">Panel samping keranjang / form</span>
+          </a>
+          <a href="/komponen/alert" class="p-3 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] hover:border-blue-500 transition-colors">
+            <span class="font-bold text-sm block text-[var(--text-main)]">Alert Banner</span>
+            <span class="text-xs text-[var(--text-muted)]">Pesan sistem statis & persisten</span>
+          </a>
+          <a href="/komponen/toast" class="p-3 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] hover:border-blue-500 transition-colors">
+            <span class="font-bold text-sm block text-[var(--text-main)]">Toast / Snackbar</span>
+            <span class="text-xs text-[var(--text-muted)]">Konfirmasi sukses 4 detik</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Level 4 -->
+      <div class="border border-[var(--border-main)] rounded-2xl p-6 sm:p-8 bg-[var(--bg-card)]">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-8 h-8 rounded-lg bg-amber-600 text-white font-mono-code font-bold flex items-center justify-center text-sm">
+            04
+          </span>
+          <div>
+            <h2 class="font-serif-display text-2xl text-[var(--text-main)]">Level 4: Pengelola Data Kompleks (Organisms)</h2>
+            <p class="text-xs font-mono-code text-[var(--text-muted)]">Fokus: Performa dataset besar, pencarian dinamis, dan navigasi data.</p>
+          </div>
+        </div>
+        <p class="text-sm text-[var(--text-muted)] leading-relaxed mb-6">
+          Komponen paling rumit untuk aplikasi dashboard enterprise, backoffice, atau SaaS dengan ratusan data baris.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+          <a href="/komponen/table" class="p-3 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] hover:border-blue-500 transition-colors">
+            <span class="font-bold text-sm block text-[var(--text-main)]">Data Table</span>
+            <span class="text-xs text-[var(--text-muted)]">Matriks sorting & bulk select</span>
+          </a>
+          <a href="/komponen/combobox" class="p-3 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] hover:border-blue-500 transition-colors">
+            <span class="font-bold text-sm block text-[var(--text-main)]">Combobox</span>
+            <span class="text-xs text-[var(--text-muted)]">Filter opsi ratusan item</span>
+          </a>
+          <a href="/komponen/pagination" class="p-3 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] hover:border-blue-500 transition-colors">
+            <span class="font-bold text-sm block text-[var(--text-main)]">Pagination</span>
+            <span class="text-xs text-[var(--text-muted)]">Pemisah beban data per halaman</span>
+          </a>
+          <a href="/komponen/tree-view" class="p-3 rounded-xl border border-[var(--border-main)] bg-[var(--bg-main)] hover:border-blue-500 transition-colors">
+            <span class="font-bold text-sm block text-[var(--text-main)]">Tree View</span>
+            <span class="text-xs text-[var(--text-muted)]">Folder berkas bertingkat</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- DECISION TREE SECTION -->
+    <section class="border-t border-[var(--border-main)] pt-12">
+      <h2 class="font-serif-display text-3xl text-[var(--text-main)] mb-6">
+        Pohon Keputusan: "Komponen Mana yang Harus Saya Pakai?"
+      </h2>
+
+      <div class="space-y-4 text-xs font-mono-code">
+        <div class="p-4 rounded-xl border border-[var(--border-main)] bg-[var(--bg-card)]">
+          <strong class="text-blue-600 dark:text-blue-400 block mb-1">KASUS: Ingin menampilkan pesan pemberitahuan ke pengguna</strong>
+          <p class="text-[var(--text-muted)] mb-2">Apakah pesan ini butuh konfirmasi segera dan memutus alur kerja?</p>
+          <ul class="space-y-2 list-disc list-inside text-[var(--text-main)]">
+            <li>
+              <strong>YA, kritis & bahaya</strong> (misal: "Yakin hapus database?") → 
+              Gunakan <a href="/komponen/modal" class="inline-flex items-center gap-1 font-bold text-blue-600 dark:text-blue-400 hover:underline">Modal Alert Dialog →</a>
+            </li>
+            <li>
+              <strong>TIDAK, tapi butuh perbaikan sebelum lanjut</strong> (misal: "Koneksi pembayaran terputus") → 
+              Gunakan <a href="/komponen/alert" class="inline-flex items-center gap-1 font-bold text-blue-600 dark:text-blue-400 hover:underline">Alert Banner Inline →</a>
+            </li>
+            <li>
+              <strong>TIDAK, hanya konfirmasi sukses ringan</strong> (misal: "Draft tersimpan") → 
+              Gunakan <a href="/komponen/toast" class="inline-flex items-center gap-1 font-bold text-blue-600 dark:text-blue-400 hover:underline">Toast Notification (Auto-dismiss) →</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="p-4 rounded-xl border border-[var(--border-main)] bg-[var(--bg-card)]">
+          <strong class="text-blue-600 dark:text-blue-400 block mb-1">KASUS: Ingin menyembunyikan sebagian konten agar tidak memakan ruang</strong>
+          <p class="text-[var(--text-muted)] mb-2">Bagaimana struktur hierarki dan keterhubungannya?</p>
+          <ul class="space-y-2 list-disc list-inside text-[var(--text-main)]">
+            <li>
+              <strong>Daftar tanya jawab / filter vertikal independen</strong> → 
+              Gunakan <a href="/komponen/accordion" class="inline-flex items-center gap-1 font-bold text-blue-600 dark:text-blue-400 hover:underline">Accordion →</a>
+            </li>
+            <li>
+              <strong>Konten paralel dari subjek yang sama</strong> (misal: Deskripsi vs Spesifikasi vs Review) → 
+              Gunakan <a href="/komponen/tabs" class="inline-flex items-center gap-1 font-bold text-blue-600 dark:text-blue-400 hover:underline">Tabs →</a>
+            </li>
+            <li>
+              <strong>Formulir sekunder atau keranjang belanja</strong> → 
+              Gunakan <a href="/komponen/drawer" class="inline-flex items-center gap-1 font-bold text-blue-600 dark:text-blue-400 hover:underline">Drawer / Sheet →</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="p-4 rounded-xl border border-[var(--border-main)] bg-[var(--bg-card)]">
+          <strong class="text-blue-600 dark:text-blue-400 block mb-1">KASUS: Ingin meminta input pilihan dari pengguna</strong>
+          <p class="text-[var(--text-muted)] mb-2">Berapa jumlah opsi yang tersedia?</p>
+          <ul class="space-y-2 list-disc list-inside text-[var(--text-main)]">
+            <li>
+              <strong>1 pilihan biner Ya/Tidak instan</strong> → 
+              Gunakan <a href="/komponen/toggle-switch" class="inline-flex items-center gap-1 font-bold text-blue-600 dark:text-blue-400 hover:underline">Toggle Switch →</a>
+            </li>
+            <li>
+              <strong>Bisa memilih lebih dari satu opsi</strong> → 
+              Gunakan <a href="/komponen/checkbox" class="inline-flex items-center gap-1 font-bold text-blue-600 dark:text-blue-400 hover:underline">Checkbox Group →</a>
+            </li>
+            <li>
+              <strong>2-4 opsi yang saling eksklusif</strong> → 
+              Gunakan <a href="/komponen/button" class="inline-flex items-center gap-1 font-bold text-blue-600 dark:text-blue-400 hover:underline">Radio / Segmented Button →</a>
+            </li>
+            <li>
+              <strong>> 15 opsi</strong> (misal: daftar kota/negara) → 
+              Gunakan <a href="/komponen/combobox" class="inline-flex items-center gap-1 font-bold text-blue-600 dark:text-blue-400 hover:underline">Combobox / Autocomplete →</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

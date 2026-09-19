@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Prinsip UX & Aksesibilitas Komponen — The Component Gallery"
+  description="Hukum psikologi antarmuka, aksesibilitas WAI-ARIA, dan aturan desain fundamental dalam merancang komponen UI."
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Header -->
+    <div class="border-b border-[var(--border-main)] pb-8 mb-12">
+      <span class="text-xs font-mono-code uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold block mb-2">
+        HUKUM UX & PSIKOLOGI COGNITIVE
+      </span>
+      <h1 class="font-serif-display text-4xl sm:text-5xl text-[var(--text-main)] font-normal mb-4">
+        Prinsip Desain & Aksesibilitas Komponen
+      </h1>
+      <p class="text-base text-[var(--text-muted)] leading-relaxed max-w-2xl">
+        Komponen UI yang hebat bukan sekadar yang terlihat cantik, melainkan komponen yang menghormati cara kerja otak manusia dan keterbatasan perangkat mereka.
+      </p>
+    </div>
+
+    <!-- 6 Laws / Principles -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      <!-- 1. Progressive Disclosure -->
+      <div class="p-6 rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)]">
+        <span class="text-xs font-mono-code text-blue-600 dark:text-blue-400 font-bold block mb-2">PRINSIP 01</span>
+        <h2 class="font-serif-display text-2xl text-[var(--text-main)] mb-2">Progressive Disclosure</h2>
+        <p class="text-xs text-[var(--text-muted)] leading-relaxed mb-4">
+          Hanya tampilkan informasi yang dibutuhkan pengguna saat ini. Simpan detail lanjutan di balik aksi interaktif (seperti Accordion, Drawer, atau Modal).
+        </p>
+        <div class="p-3 rounded-lg bg-[var(--bg-main)] text-[11px] font-mono-code text-[var(--text-main)]">
+          Contoh Komponen: <strong>Accordion, Tabs, Tooltip, Read More</strong>
+        </div>
+      </div>
+
+      <!-- 2. Jakob's Law -->
+      <div class="p-6 rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)]">
+        <span class="text-xs font-mono-code text-blue-600 dark:text-blue-400 font-bold block mb-2">PRINSIP 02</span>
+        <h2 class="font-serif-display text-2xl text-[var(--text-main)] mb-2">Jakob’s Law (Familiarity)</h2>
+        <p class="text-xs text-[var(--text-muted)] leading-relaxed mb-4">
+          Pengguna mengharapkan antarmuka website Anda bekerja sama persis seperti website lain yang biasa mereka gunakan. Jangan merevolusi pola dasar seperti tombol keranjang belanja atau pagination.
+        </p>
+        <div class="p-3 rounded-lg bg-[var(--bg-main)] text-[11px] font-mono-code text-[var(--text-main)]">
+          Contoh Komponen: <strong>Navbar, Breadcrumbs, Pagination, Checkbox</strong>
+        </div>
+      </div>
+
+      <!-- 3. Fitts's Law -->
+      <div class="p-6 rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)]">
+        <span class="text-xs font-mono-code text-blue-600 dark:text-blue-400 font-bold block mb-2">PRINSIP 03</span>
+        <h2 class="font-serif-display text-2xl text-[var(--text-main)] mb-2">Fitts’s Law (Touch Target)</h2>
+        <p class="text-xs text-[var(--text-muted)] leading-relaxed mb-4">
+          Waktu untuk menjangkau suatu target dipengaruhi oleh jarak dan ukuran target tersebut. Pada smartphone, target interaktif minimal berukuran 44x44 pixel agar tidak memicu salah sentuh.
+        </p>
+        <div class="p-3 rounded-lg bg-[var(--bg-main)] text-[11px] font-mono-code text-[var(--text-main)]">
+          Contoh Komponen: <strong>Button, Icon Button, Toggle Switch, Bottom Sheet</strong>
+        </div>
+      </div>
+
+      <!-- 4. Hick's Law -->
+      <div class="p-6 rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)]">
+        <span class="text-xs font-mono-code text-blue-600 dark:text-blue-400 font-bold block mb-2">PRINSIP 04</span>
+        <h2 class="font-serif-display text-2xl text-[var(--text-main)] mb-2">Hick’s Law (Decision Time)</h2>
+        <p class="text-xs text-[var(--text-muted)] leading-relaxed mb-4">
+          Semakin banyak pilihan yang Anda berikan kepada pengguna, semakin lama waktu yang mereka butuhkan untuk mengambil keputusan. Batasi pilihan opsi utama menjadi 3-5 item maksimal.
+        </p>
+        <div class="p-3 rounded-lg bg-[var(--bg-main)] text-[11px] font-mono-code text-[var(--text-main)]">
+          Contoh Komponen: <strong>Radio Group, Pricing Table, Select, Filter Chips</strong>
+        </div>
+      </div>
+
+      <!-- 5. Perceived Performance -->
+      <div class="p-6 rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)]">
+        <span class="text-xs font-mono-code text-blue-600 dark:text-blue-400 font-bold block mb-2">PRINSIP 05</span>
+        <h2 class="font-serif-display text-2xl text-[var(--text-main)] mb-2">Perceived Performance</h2>
+        <p class="text-xs text-[var(--text-muted)] leading-relaxed mb-4">
+          Kecepatan yang dirasakan pengguna (*perceived speed*) lebih penting daripada kecepatan unduh byte aktual. Skeleton loader memberikan sinyal bahwa konten segera siap, mengurangi kecemasan menunggu.
+        </p>
+        <div class="p-3 rounded-lg bg-[var(--bg-main)] text-[11px] font-mono-code text-[var(--text-main)]">
+          Contoh Komponen: <strong>Skeleton Loader, Progress Bar, Optimistic UI</strong>
+        </div>
+      </div>
+
+      <!-- 6. Accessibility & Focus Trap -->
+      <div class="p-6 rounded-2xl border border-[var(--border-main)] bg-[var(--bg-card)]">
+        <span class="text-xs font-mono-code text-blue-600 dark:text-blue-400 font-bold block mb-2">PRINSIP 06</span>
+        <h2 class="font-serif-display text-2xl text-[var(--text-main)] mb-2">WAI-ARIA & Keyboard Trapping</h2>
+        <p class="text-xs text-[var(--text-muted)] leading-relaxed mb-4">
+          Setiap elemen interaktif wajib dapat diakses penuh hanya dengan keyboard (Tab, Enter, Escape, Spasi). Elemen modal overlay WAJIB mengunci fokus di dalam jendelanya agar tidak bocor ke latar belakang.
+        </p>
+        <div class="p-3 rounded-lg bg-[var(--bg-main)] text-[11px] font-mono-code text-[var(--text-main)]">
+          Contoh Komponen: <strong>Modal Dialog, Drawer, Combobox, Accordion</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

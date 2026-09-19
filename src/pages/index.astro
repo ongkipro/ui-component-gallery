@@ -1,0 +1,353 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { COMPONENTS, CATEGORIES } from '../data/components';
+
+const totalComponents = COMPONENTS.length;
+---
+
+<Layout title="The Component Gallery (ID) — Belajar Komponen UI/UX Web Lengkap">
+  <!-- Hero Section (Editorial Minimalist Grid) -->
+  <section class="border-b border-[var(--border-main)] bg-[var(--bg-card)] relative overflow-hidden py-16 sm:py-24 grid-ruled">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono-code bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300 border border-blue-200 dark:border-blue-900 mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-ping"></span>
+          Edisi Pembelajaran Bahasa Indonesia & AI Engineering
+        </div>
+
+        <h1 class="font-serif-display text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-[var(--text-main)] leading-[1.05] mb-6">
+          Kamus & Galeri <br/>
+          <em class="italic text-blue-600 dark:text-blue-400 font-serif-display">Komponen UI/UX</em> Web
+        </h1>
+
+        <p class="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed mb-8 max-w-2xl">
+          Eksplorasi anatomi antarmuka web modern dari design system kelas dunia (Shopify Polaris, IBM Carbon, Uber Base Web). Lengkap dengan analogi Bahasa Indonesia, aturan aksesibilitas (WAI-ARIA), dan <strong>Prompt AI Production</strong> siap pakai.
+        </p>
+
+        <!-- Stat Badges -->
+        <div class="flex flex-wrap items-center gap-6 pt-6 border-t border-[var(--border-main)] text-xs sm:text-sm font-mono-code text-[var(--text-muted)]">
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-bold font-serif-display text-[var(--text-main)]">{totalComponents}</span>
+            <span>Komponen Utama</span>
+          </div>
+          <span class="text-[var(--border-main)]">•</span>
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-bold font-serif-display text-[var(--text-main)]">95+</span>
+            <span>Design Systems Acuan</span>
+          </div>
+          <span class="text-[var(--border-main)]">•</span>
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-bold font-serif-display text-[var(--text-main)]">100%</span>
+            <span>Prompt AI & Sandbox</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter & Catalog Section -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <!-- Real-World Case Study Highlight Card -->
+    <div class="mb-8 p-5 sm:p-6 rounded-2xl border border-red-200 dark:border-red-900/60 bg-gradient-to-r from-red-50/70 via-white to-slate-50 dark:from-red-950/30 dark:via-slate-900 dark:to-slate-900 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-2xs">
+      <div class="flex items-start gap-3.5">
+        <div class="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center shrink-0 shadow-xs font-mono-code font-bold text-sm">
+          B2B
+        </div>
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-[10px] font-mono-code uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-red-100 text-red-700 dark:bg-red-900/60 dark:text-red-300">
+              Studi Kasus Nyata
+            </span>
+            <span class="text-xs font-mono-code text-[var(--text-muted)]">dealerhinoofficial.com</span>
+          </div>
+          <h3 class="font-serif-display text-lg sm:text-xl text-[var(--text-main)] font-normal">
+            Bedah Komponen UI/UX: Bagaimana Dealer Truk Hino Menghasilkan Lead Penjualan
+          </h3>
+          <p class="text-xs text-[var(--text-muted)] mt-0.5 max-w-2xl leading-relaxed">
+            Pelajari bagaimana 8 komponen (Hero Trust Badge, Product Cards, Mobile Drawer, Accordion FAQ, hingga WhatsApp Sticky Bar) dirangkai untuk konversi bernilai ratusan juta.
+          </p>
+        </div>
+      </div>
+      <a 
+        href="/studi-kasus/dealer-hino" 
+        class="shrink-0 px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold font-mono-code transition-all shadow-xs flex items-center justify-center gap-2"
+      >
+        <span>Buka Studi Kasus</span>
+        <span>→</span>
+      </a>
+    </div>
+
+    <!-- Category Tabs Bar & Search Input -->
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-8 border-b border-[var(--border-main)]">
+      <!-- Category Filter Buttons -->
+      <div class="flex flex-wrap items-center gap-1.5" id="category-filter-container">
+        {CATEGORIES.map((cat) => (
+          <button
+            type="button"
+            data-category={cat.id}
+            class={`category-btn px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              cat.id === 'all'
+                ? 'bg-[var(--text-main)] text-[var(--bg-main)] shadow-sm'
+                : 'bg-[var(--bg-card)] text-[var(--text-muted)] hover:text-[var(--text-main)] border border-[var(--border-main)]'
+            }`}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      <!-- Quick Search input -->
+      <div class="relative w-full lg:w-72">
+        <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)] pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input 
+          id="catalog-search"
+          type="search" 
+          placeholder="Cari komponen atau alias..." 
+          class="w-full pl-9 pr-4 py-2 text-xs font-mono-code rounded-lg bg-[var(--bg-card)] border border-[var(--border-main)] text-[var(--text-main)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-blue-500 transition-colors"
+        />
+      </div>
+    </div>
+
+    <!-- Results Counter -->
+    <div class="py-4 flex items-center justify-between text-xs font-mono-code text-[var(--text-muted)]">
+      <span>Menampilkan <strong id="visible-count" class="text-[var(--text-main)]">{totalComponents}</strong> komponen</span>
+      <span class="hidden sm:inline">Klik kartu untuk melihat anatomi & prompt AI</span>
+    </div>
+
+    <!-- Component Grid (Architectural 1px Border Style) -->
+    <div 
+      id="components-grid"
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6"
+    >
+      {COMPONENTS.map((comp) => (
+        <article 
+          class="component-card link-card bg-[var(--bg-card)] border border-[var(--border-main)] hover:border-blue-500/60 dark:hover:border-blue-400/60 rounded-xl p-4 sm:p-5 flex flex-col justify-between group transition-all duration-200 hover:shadow-md relative cursor-pointer"
+          data-id={comp.id}
+          data-category={comp.category}
+          data-search={`${comp.name.toLowerCase()} ${comp.nameIndo.toLowerCase()} ${comp.alsoKnownAs.join(' ').toLowerCase()} ${comp.summary.toLowerCase()}`}
+        >
+          <div>
+            <!-- Blueprint SVG Box (4:3) with Link -->
+            <a 
+              href={`/komponen/${comp.id}`} 
+              class="block w-full aspect-[4/3] rounded-lg border border-[var(--border-main)] bg-[var(--bg-main)] p-2 mb-4 overflow-hidden transition-transform group-hover:scale-[1.01]"
+              aria-label={`Buka detail blueprint ${comp.name}`}
+            >
+              <div class="w-full h-full text-[var(--text-main)]" set:html={comp.svgIcon} />
+            </a>
+
+            <!-- Header & Badge -->
+            <div class="flex items-start justify-between gap-2 mb-1.5">
+              <div>
+                <span class="text-[10px] font-mono-code uppercase tracking-wider text-blue-600 dark:text-blue-400 block mb-0.5 font-bold">
+                  {comp.categoryLabel}
+                </span>
+                <h2 class="font-serif-display text-2xl font-normal text-[var(--text-main)] group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  <a href={`/komponen/${comp.id}`} class="hover:underline">
+                    {comp.name}
+                  </a>
+                </h2>
+              </div>
+            </div>
+
+            <!-- Indonesian Translation Title -->
+            <p class="text-xs font-semibold text-[var(--text-main)] mb-1.5">
+              {comp.nameIndo}
+            </p>
+
+            <!-- Aliases (Also known as) -->
+            <div class="text-[11px] text-[var(--text-muted)] italic font-mono-code mb-3 line-clamp-1">
+              Alias: {comp.alsoKnownAs.map(a => a.split('(')[0].trim()).join(', ')}
+            </div>
+
+            <!-- Indonesian Summary -->
+            <p class="text-xs text-[var(--text-muted)] leading-relaxed line-clamp-3 mb-4">
+              {comp.summary}
+            </p>
+          </div>
+
+          <!-- Bottom Metadata & Real Action Button -->
+          <div class="pt-3 border-t border-[var(--border-main)] flex items-center justify-between text-xs text-[var(--text-muted)] gap-2">
+            <span class="font-mono-code text-[11px] flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              <span class="text-emerald-700 dark:text-emerald-400 font-semibold">WAI-ARIA</span>
+            </span>
+
+            <!-- Real Clickable Detail Button -->
+            <a 
+              href={`/komponen/${comp.id}`}
+              class="relative z-10 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-600 dark:hover:bg-blue-600 text-blue-600 dark:text-blue-400 hover:text-white dark:hover:text-white text-xs font-bold font-mono-code transition-all shadow-2xs group-hover:bg-blue-600 group-hover:text-white min-h-[38px] touch-manipulation cursor-pointer"
+              aria-label={`Buka detail dan prompt ${comp.name}`}
+            >
+              <span>Lihat Detail</span>
+              <span class="transition-transform group-hover:translate-x-0.5">→</span>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Empty State for Search -->
+    <div id="no-results" class="hidden py-16 text-center border border-dashed border-[var(--border-main)] rounded-2xl my-8">
+      <div class="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 flex items-center justify-center mx-auto mb-3 text-xl font-mono-code">
+        ∅
+      </div>
+      <h3 class="font-semibold text-base text-[var(--text-main)] mb-1">Komponen Tidak Ditemukan</h3>
+      <p class="text-xs text-[var(--text-muted)] max-w-sm mx-auto">
+        Coba gunakan kata kunci umum dalam Bahasa Indonesia atau Inggris (misal: "modal", "lipat", "tab", "alert", "tombol").
+      </p>
+    </div>
+  </section>
+
+  <!-- Educational Section: 3 UX Foundations -->
+  <section class="border-t border-[var(--border-main)] bg-[var(--bg-card)] py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-12">
+        <h2 class="font-serif-display text-3xl sm:text-4xl text-[var(--text-main)] mb-3">
+          Prinsip Desain Komponen UI/UX
+        </h2>
+        <p class="text-sm text-[var(--text-muted)] leading-relaxed">
+          Mengapa antarmuka web modern dibangun berbasis komponen, bukan halaman lepas?
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="border border-[var(--border-main)] p-6 rounded-xl bg-[var(--bg-main)]">
+          <span class="font-mono-code text-xs text-blue-600 dark:text-blue-400 font-bold block mb-2">01 / CONSISTENCY</span>
+          <h3 class="font-bold text-base text-[var(--text-main)] mb-2">Pengalaman Terprediksi (Predictability)</h3>
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+            Pengguna internet menghabiskan 99% waktu mereka di situs orang lain (Jakob's Law). Dengan menggunakan komponen standar (seperti Accordion, Modal, Tabs), pengguna tidak perlu belajar ulang cara menavigasi website Anda.
+          </p>
+        </div>
+
+        <div class="border border-[var(--border-main)] p-6 rounded-xl bg-[var(--bg-main)]">
+          <span class="font-mono-code text-xs text-blue-600 dark:text-blue-400 font-bold block mb-2">02 / YAGNI & ACCESSIBILITY</span>
+          <h3 class="font-bold text-base text-[var(--text-main)] mb-2">Aksesibilitas (WAI-ARIA) Tanpa Beban</h3>
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+            Membangun antarmuka yang ramah keyboard dan screen reader itu sulit jika dilakukan dari nol di setiap layar. Komponen yang terstandarisasi menyelesaikan masalah focus trap, kontras warna, dan atribut ARIA sekali untuk selamanya.
+          </p>
+        </div>
+
+        <div class="border border-[var(--border-main)] p-6 rounded-xl bg-[var(--bg-main)]">
+          <span class="font-mono-code text-xs text-blue-600 dark:text-blue-400 font-bold block mb-2">03 / SHARED VOCABULARY</span>
+          <h3 class="font-bold text-base text-[var(--text-main)] mb-2">Bahasa Bersama Tim & AI</h3>
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+            Ketika PM, UI designer, frontend engineer, dan AI Agent menggunakan istilah yang persis sama ("Combobox" bukan sekadar "pencarian dropdown"), miskomunikasi hilang dan kecepatan iterasi meningkat 5x lipat.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client-side Fast Filtering Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('catalog-search') as HTMLInputElement | null;
+      const categoryButtons = document.querySelectorAll<HTMLButtonElement>('.category-btn');
+      const cards = document.querySelectorAll<HTMLElement>('.component-card');
+      const visibleCount = document.getElementById('visible-count');
+      const noResults = document.getElementById('no-results');
+
+      let activeCategory = 'all';
+      let searchQuery = '';
+
+      function filterComponents() {
+        let count = 0;
+        cards.forEach((card) => {
+          const cardCategory = card.dataset.category || '';
+          const cardSearchData = card.dataset.search || '';
+
+          const matchesCategory = activeCategory === 'all' || cardCategory === activeCategory;
+          const matchesSearch = !searchQuery || cardSearchData.includes(searchQuery.toLowerCase());
+
+          if (matchesCategory && matchesSearch) {
+            card.classList.remove('hidden');
+            count++;
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+
+        if (visibleCount) visibleCount.textContent = count.toString();
+        if (noResults) {
+          if (count === 0) {
+            noResults.classList.remove('hidden');
+          } else {
+            noResults.classList.add('hidden');
+          }
+        }
+      }
+
+      // Entire card clickable handler (improves mobile tap navigation)
+      cards.forEach((card) => {
+        card.addEventListener('click', (e) => {
+          const target = e.target as HTMLElement;
+          if (target.closest('a')) return;
+          const id = card.dataset.id;
+          if (id) {
+            window.location.href = `/komponen/${id}`;
+          }
+        });
+      });
+
+      // Search input handler (live real-time)
+      searchInput?.addEventListener('input', (e) => {
+        searchQuery = (e.target as HTMLInputElement).value.trim();
+        filterComponents();
+      });
+
+      // Category buttons handler
+      categoryButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          activeCategory = btn.dataset.category || 'all';
+
+          // Update active styles
+          categoryButtons.forEach((b) => {
+            b.classList.remove('bg-[var(--text-main)]', 'text-[var(--bg-main)]', 'shadow-sm');
+            b.classList.add('bg-[var(--bg-card)]', 'text-[var(--text-muted)]', 'border', 'border-[var(--border-main)]');
+          });
+
+          btn.classList.remove('bg-[var(--bg-card)]', 'text-[var(--text-muted)]', 'border', 'border-[var(--border-main)]');
+          btn.classList.add('bg-[var(--text-main)]', 'text-[var(--bg-main)]', 'shadow-sm');
+
+          filterComponents();
+        });
+      });
+
+      // Connect Modal Search to Quick Filter
+      const modalSearchInput = document.getElementById('modal-search-input') as HTMLInputElement | null;
+      const modalResults = document.getElementById('modal-search-results');
+
+      modalSearchInput?.addEventListener('input', (e) => {
+        const query = (e.target as HTMLInputElement).value.trim().toLowerCase();
+        if (!modalResults) return;
+
+        if (!query) {
+          modalResults.innerHTML = '<p class="p-4 text-center text-xs text-[var(--text-muted)] font-mono-code">Mulai mengetik untuk mencari komponen...</p>';
+          return;
+        }
+
+        const matched = Array.from(cards).filter(c => (c.dataset.search || '').includes(query));
+        if (matched.length === 0) {
+          modalResults.innerHTML = '<p class="p-4 text-center text-xs text-[var(--text-muted)]">Tidak ada komponen yang cocok.</p>';
+          return;
+        }
+
+        modalResults.innerHTML = matched.slice(0, 8).map(card => {
+          const id = card.dataset.id;
+          const title = card.querySelector('h2')?.textContent?.trim() || '';
+          const desc = card.querySelector('p')?.textContent?.trim() || '';
+          return `
+            <a href="/komponen/${id}" class="block p-3 rounded-lg hover:bg-[var(--border-main)] transition-colors">
+              <div class="font-medium text-[var(--text-main)] text-sm flex items-center justify-between">
+                <span>${title}</span>
+                <span class="text-xs font-mono-code text-blue-600">Buka →</span>
+              </div>
+              <p class="text-xs text-[var(--text-muted)] truncate mt-0.5">${desc}</p>
+            </a>
+          `;
+        }).join('');
+      });
+    });
+  </script>
+</Layout>
